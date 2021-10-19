@@ -17,5 +17,7 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint"],
-  "rules": {}
+  "rules": {
+    "@typescript-eslint/explicit-member-accessibility": "error"
+  }
 }
