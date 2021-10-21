@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
-import { createStore } from 'redux';
+import { firebaseReducer } from 'react-redux-firebase';
+import { firestoreReducer } from 'redux-firestore';
 
 import authReducer from './auth.reducer';
 
-const initialState = {};
-
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
+  firebase: firebaseReducer,
+  firestore: firestoreReducer,
   auth: authReducer,
 });
 
-export const store = createStore(rootReducer, initialState);
+export type RootState = ReturnType<typeof rootReducer>;
