@@ -33,4 +33,9 @@ export const BlueTheme = {
     overlayColor: '#f3f3f3',
     spinColor: '#005be0',
   },
+  drawingPanel: {
+    border: '#000000',
+    iconBgHover: '#b0b0b0',
+    selectedTool: '#07a9fa',
+  },
 };

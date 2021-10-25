@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { login, register } from '../../core/actions/auth.actions';
-import { useTypedSelector } from '../../core/hooks/use.typed.selector';
+import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
 import { selectAuthErrors } from '../../core/selectors/selectors';
 import {
   Form,

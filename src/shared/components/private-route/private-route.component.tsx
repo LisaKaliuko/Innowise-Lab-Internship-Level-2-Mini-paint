@@ -1,15 +1,15 @@
 import React, { FC, ReactNode } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import { selectUser } from '../core/selectors/selectors';
-import { useTypedSelector } from '../core/hooks/use.typed.selector';
+import { selectUser } from '../../../core/selectors/selectors';
+import { useTypedSelector } from '../../../core/hooks/use-typed-selector.hook';
 
 interface PrivateRouteProps {
   path: string;
   children: ReactNode;
 }
 
-const PrivateRoute: FC<PrivateRouteProps> = ({
+const PrivateRouteComponent: FC<PrivateRouteProps> = ({
   path,
   children,
 }): JSX.Element => {
@@ -22,4 +22,4 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
   );
 };
 
-export default PrivateRoute;
+export default PrivateRouteComponent;

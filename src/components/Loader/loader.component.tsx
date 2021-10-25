@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
 import { selectAuthLoading } from '../../core/selectors/selectors';
-import { useTypedSelector } from '../../core/hooks/use.typed.selector';
+import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
 import { LoaderContainer, LoaderItem } from './styles';
 
-const Loader: FC = (): JSX.Element => {
+const LoaderComponent: FC = (): JSX.Element => {
   const isLoadingAuth = useTypedSelector(selectAuthLoading);
 
   if (isLoadingAuth) {
@@ -17,4 +17,4 @@ const Loader: FC = (): JSX.Element => {
   return <></>;
 };
 
-export default Loader;
+export default LoaderComponent;

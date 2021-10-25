@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import { Route, Redirect } from 'react-router';
 
-import FormComponent from '../components/Form/form.component';
-import { useTypedSelector } from '../core/hooks/use.typed.selector';
+import { Form } from '../components/form';
+import { useTypedSelector } from '../core/hooks/use-typed-selector.hook';
 import { selectUser } from '../core/selectors/selectors';
-import { PATHES, FORM_TYPES } from '../constants/constants';
+import { LoginFormData } from '../shared/constants/forms-data.constants';
+import { AppRouteNames } from '../shared/constants/app-route-names.constants';
 
 interface LoginRouteProps {
   path: string;
@@ -16,9 +17,9 @@ const LoginRoute: FC<LoginRouteProps> = ({ path }): JSX.Element => {
   return (
     <Route path={path} exact>
       {!user ? (
-        <FormComponent formType={FORM_TYPES.LOGIN} />
+        <Form formType={LoginFormData} />
       ) : (
-        <Redirect to={PATHES.PAINT} />
+        <Redirect to={AppRouteNames.Paint} />
       )}
     </Route>
   );

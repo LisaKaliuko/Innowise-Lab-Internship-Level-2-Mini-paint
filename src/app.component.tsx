@@ -2,32 +2,32 @@ import React, { FC } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import HeaderComponent from './components/Header/header.component';
-import Loader from './components/Loader/loader.component';
 import LoginRoute from './routes/login.route';
 import RegisterRoute from './routes/register.route';
-import PrivateRoute from './routes/private.route';
-import MainPageComponent from './pages/MainPage/main.page.component';
-import PaintComponent from './pages/Paint/paint.component';
-import FooterComponent from './components/Footer/footer.component';
-import { PATHES } from './constants/constants';
+import { PrivateRoute } from './shared/components/private-route';
+import { MainPage } from './pages/main-page';
+import { Paint } from './pages/paint';
+import { Loader } from './components/loader';
+import { Header } from './components/header';
+import { Footer } from './components/footer';
+import { AppRouteNames } from './shared/constants/app-route-names.constants';
 import { BlueTheme } from './theme';
 
 const AppComponent: FC = (): JSX.Element => {
   return (
     <ThemeProvider theme={BlueTheme}>
       <Router>
-        <HeaderComponent />
+        <Header />
         <Loader />
         <Switch>
-          <Route path={PATHES.MAIN_PAGE} exact component={MainPageComponent} />
-          <LoginRoute path={PATHES.LOGIN} />
-          <RegisterRoute path={PATHES.REGISTER} />
-          <PrivateRoute path={PATHES.PAINT}>
-            <PaintComponent />
+          <Route path={AppRouteNames.Home} exact component={MainPage} />
+          <LoginRoute path={AppRouteNames.Login} />
+          <RegisterRoute path={AppRouteNames.Register} />
+          <PrivateRoute path={AppRouteNames.Paint}>
+            <Paint />
           </PrivateRoute>
         </Switch>
-        <FooterComponent />
+        <Footer />
       </Router>
     </ThemeProvider>
   );

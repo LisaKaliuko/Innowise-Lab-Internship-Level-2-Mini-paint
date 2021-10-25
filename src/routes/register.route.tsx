@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import { Route, Redirect } from 'react-router';
 
-import FormComponent from '../components/Form/form.component';
-import { useTypedSelector } from '../core/hooks/use.typed.selector';
+import { Form } from '../components/form';
+import { useTypedSelector } from '../core/hooks/use-typed-selector.hook';
 import { selectUser } from '../core/selectors/selectors';
-import { PATHES, FORM_TYPES } from '../constants/constants';
+import { RegisterFormData } from '../shared/constants/forms-data.constants';
+import { AppRouteNames } from '../shared/constants/app-route-names.constants';
 
 interface RegisterRouteProps {
   path: string;
@@ -16,9 +17,9 @@ const RegisterRoute: FC<RegisterRouteProps> = ({ path }): JSX.Element => {
   return (
     <Route path={path} exact>
       {!user ? (
-        <FormComponent formType={FORM_TYPES.REGISTER} />
+        <Form formType={RegisterFormData} />
       ) : (
-        <Redirect to={PATHES.PAINT} />
+        <Redirect to={AppRouteNames.Paint} />
       )}
     </Route>
   );
