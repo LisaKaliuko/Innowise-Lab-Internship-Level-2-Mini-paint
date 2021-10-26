@@ -1,11 +1,11 @@
 export const BlueTheme = {
   header: {
-    bg: '#005be0',
+    bg: '#003f87',
     text: '#ffffff',
-    textHover: '#7CFF91',
+    textHover: '#73b2fa',
   },
   footer: {
-    bg: '#005be0',
+    bg: '#003f87',
     text: '#ffffff',
   },
   mainPage: {
@@ -13,15 +13,15 @@ export const BlueTheme = {
       'linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet)',
   },
   primaryButton: {
-    border: '#005be0',
+    border: '#003f87',
     text: '#000000',
     textHover: '#ffffff',
-    bgHover: '#24C1ED',
+    bgHover: '#73b2fa',
   },
   form: {
     shadow: 'rgba(0,0,0,0.5)',
     input: '#c7ccd0',
-    button: '#005be0',
+    button: '#003f87',
     buttonText: '#ffffff',
     buttonHover: '#070063',
   },
@@ -31,7 +31,7 @@ export const BlueTheme = {
   loader: {
     bgColor: '#ffffff',
     overlayColor: '#f3f3f3',
-    spinColor: '#005be0',
+    spinColor: '#003f87',
   },
   drawingPanel: {
     border: '#000000',
