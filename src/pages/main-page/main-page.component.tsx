@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { PATHES, IMG_LINK } from '../../constants/constants';
-import { Content, Title, Text, PrimaryButton } from './styles';
+import { IMG_LINK } from '../../shared/constants/main-page-img.constants';
+import { AppRouteNames } from '../../shared/constants/app-route-names.constants';
+import { Content, Title, Text, PrimaryButton } from './main-page.styles';
 
 const MainPageComponent: FC = (): JSX.Element => {
   return (
@@ -16,7 +17,7 @@ const MainPageComponent: FC = (): JSX.Element => {
         web and desktop cross-platform, without a steep learning curve.
       </Text>
       <PrimaryButton>
-        <Link to={PATHES.PAINT}>
+        <Link to={AppRouteNames.Paint}>
           Try it
           <img src={IMG_LINK} alt="" />
         </Link>

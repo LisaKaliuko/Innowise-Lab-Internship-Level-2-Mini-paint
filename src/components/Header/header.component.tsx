@@ -2,11 +2,11 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { useTypedSelector } from '../../core/hooks/use.typed.selector';
+import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
 import { selectUser } from '../../core/selectors/selectors';
 import { logOut } from '../../core/actions/auth.actions';
-import { PATHES } from '../../constants/constants';
-import { Menu, Title, Links, LinkItem } from './styles';
+import { AppRouteNames } from '../../shared/constants/app-route-names.constants';
+import { Menu, Title, Links, LinkItem } from './header.styles';
 
 const HeaderComponent: FC = (): JSX.Element => {
   const user = useTypedSelector(selectUser);
@@ -17,27 +17,25 @@ const HeaderComponent: FC = (): JSX.Element => {
   return (
     <Menu>
       <Title>
-        <Link to={PATHES.MAIN_PAGE}>MINI-PAINT</Link>
+        <Link to={AppRouteNames.Home}>MINI-PAINT</Link>
       </Title>
       <Links>
         {!user ? (
           <>
             <LinkItem>
-              <Link to={PATHES.LOGIN}>Login</Link>
+              <Link to={AppRouteNames.Login}>Login</Link>
             </LinkItem>
             <LinkItem>
-              <Link to={PATHES.REGISTER}>Register</Link>
+              <Link to={AppRouteNames.Register}>Register</Link>
             </LinkItem>
           </>
-        ) : null}
-
-        {user ? (
+        ) : (
           <LinkItem>
-            <Link to={PATHES.MAIN_PAGE} onClick={logOutUser}>
+            <Link to={AppRouteNames.Home} onClick={logOutUser}>
               Log out
             </Link>
           </LinkItem>
-        ) : null}
+        )}
       </Links>
     </Menu>
   );
