@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Footer } from './styles';
+import { Footer } from './footer.styles';
 
 const FooterComponent: FC = (): JSX.Element => {
   return (

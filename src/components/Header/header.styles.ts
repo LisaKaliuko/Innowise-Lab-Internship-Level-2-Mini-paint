@@ -2,11 +2,9 @@ import styled from 'styled-components';
 
 export const Menu = styled.nav`
   background-color: ${(props) => props.theme.header.bg};
-
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-
   padding: 25px 0px;
 
   a {
@@ -28,10 +26,8 @@ export const Title = styled.div`
 
 export const Links = styled.ul`
   display: flex;
-
   margin: 0px;
   padding: 0px;
-
   list-style: none;
 `;
 

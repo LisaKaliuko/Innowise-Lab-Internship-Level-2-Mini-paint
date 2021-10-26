@@ -13,7 +13,7 @@ import {
   Input,
   Button,
   Warning,
-} from './styles';
+} from './form.styles';
 
 interface FormComponentProps {
   formType: {
@@ -71,10 +71,10 @@ const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
         />
       </InputGroup>
       <Warning>
-        {title === 'Login' && errors?.loginError ? errors.loginError : null}
+        {title === 'Login' && errors?.loginError ? errors.loginError : ''}
         {title === 'Registration' && errors?.registerError
           ? errors.registerError
-          : null}
+          : ''}
       </Warning>
       <Button type="submit">{title}</Button>
     </Form>

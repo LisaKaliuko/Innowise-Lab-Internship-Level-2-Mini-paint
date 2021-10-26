@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { selectAuthLoading } from '../../core/selectors/selectors';
 import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
-import { LoaderContainer, LoaderItem } from './styles';
+import { LoaderContainer, LoaderItem } from './loader.styles';
 
 const LoaderComponent: FC = (): JSX.Element => {
   const isLoadingAuth = useTypedSelector(selectAuthLoading);

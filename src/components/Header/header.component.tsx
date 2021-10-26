@@ -6,7 +6,7 @@ import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
 import { selectUser } from '../../core/selectors/selectors';
 import { logOut } from '../../core/actions/auth.actions';
 import { AppRouteNames } from '../../shared/constants/app-route-names.constants';
-import { Menu, Title, Links, LinkItem } from './styles';
+import { Menu, Title, Links, LinkItem } from './header.styles';
 
 const HeaderComponent: FC = (): JSX.Element => {
   const user = useTypedSelector(selectUser);

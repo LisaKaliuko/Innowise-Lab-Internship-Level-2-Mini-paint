@@ -12,14 +12,7 @@ export const Title = styled.h1`
 
 export const Canvas = styled.canvas`
   display: block;
-
-  // width: 90%;
-  // width: 760px;
-  // height: 480px;
-  // max-height: 600px;
-
   margin: auto;
-
   border: 2px solid black;
 `;
 
