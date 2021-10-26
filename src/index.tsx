@@ -14,7 +14,7 @@ import App from './app.component';
 import { firebaseConfig } from './config/fb.config';
 import { rootReducer } from './core/reducers/root.reducer';
 import { rootSaga } from './core/saga/root.saga';
-import { loadState, saveState } from './shared/helpers/helpers';
+import { loadState, saveState } from './shared/helpers/state.helpers';
 
 firebase.initializeApp(firebaseConfig);
 

@@ -1,9 +1,5 @@
 import { Tool } from '../../core/interfaces/draw.interface';
-import {
-  RectangleIcon,
-  LineIcon,
-  CircleIcon,
-} from '../../pages/paint/icons/icons';
+import { RectangleIcon, LineIcon, CircleIcon } from '../components/icons/icons';
 
 export const TOOLS: Array<Tool> = [
   { value: 'line', icon: LineIcon },

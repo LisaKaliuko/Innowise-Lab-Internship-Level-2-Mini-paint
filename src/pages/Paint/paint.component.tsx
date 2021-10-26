@@ -1,14 +1,14 @@
 import React, { FC, useEffect, useRef, useState, MouseEvent } from 'react';
 
-import line from './tools/line/line.tool';
-import rectangle from './tools/rectangle/rect.tool';
-import circle from './tools/circle/circle.tool';
+import line from '../../shared/helpers/line.helpers';
+import rectangle from '../../shared/helpers/rect.helpers';
+import circle from '../../shared/helpers/circle.helpers';
 import DrawingToolsPanelComponent from './components/drawing-tools-panel/drawing-tools-panel.component';
 import { CanvasSize } from '../../shared/constants/canvas-size.constants';
 import { Coordinates, ListOfTools } from '../../core/interfaces/draw.interface';
 import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
 import { selectCurrentTool } from '../../core/selectors/selectors';
-import { Container, Title, Canvas, DrawingContainer } from './styles';
+import { Container, Title, Canvas, DrawingContainer } from './paint.styles';
 
 const tools: ListOfTools = {
   line: line,
@@ -56,7 +56,8 @@ const PaintComponent: FC = (): JSX.Element => {
   };
 
   const onMouseMove = (e: MouseEvent) => {
-    if (context)
+    if (context) {
+      context.lineWidth = 1;
       tools[currentTool].onMouseMove({
         e,
         context,
@@ -65,6 +66,7 @@ const PaintComponent: FC = (): JSX.Element => {
         startDrawingPos,
         canvasData,
       });
+    }
   };
 
   return (
