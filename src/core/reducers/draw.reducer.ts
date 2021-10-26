@@ -5,20 +5,34 @@ import { DrawActionsTypes } from '../actions/draw.actions';
 
 interface InitialState {
   currentTool: string;
+  thickness: number;
+  color: string;
 }
 
 const initialState: InitialState = {
   currentTool: 'line',
+  thickness: 3,
+  color: '#000000',
 };
 
 const drawReducer = handleActions<InitialState>(
   {
-    [DrawActionsTypes.CHOOSE_TOOL]: (
+    [DrawActionsTypes.SET_TOOL]: (state: InitialState, action: AnyAction) => ({
+      ...state,
+      currentTool: action.payload.toolName,
+    }),
+
+    [DrawActionsTypes.SET_THICKNESS]: (
       state: InitialState,
       action: AnyAction
     ) => ({
       ...state,
-      currentTool: action.payload.toolName,
+      thickness: action.payload.thickness,
+    }),
+
+    [DrawActionsTypes.SET_COLOR]: (state: InitialState, action: AnyAction) => ({
+      ...state,
+      color: action.payload.color,
     }),
   },
 

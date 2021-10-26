@@ -14,7 +14,11 @@ export const selectAuthLoading = createSelector(
   (auth) => auth.isLoading
 );
 
-export const selectCurrentTool = createSelector(
+export const selectTool = createSelector(getDraw, (draw) => draw.currentTool);
+
+export const selectThickness = createSelector(
   getDraw,
-  (draw) => draw.currentTool
+  (draw) => draw.thickness
 );
+
+export const selectColor = createSelector(getDraw, (draw) => draw.color);

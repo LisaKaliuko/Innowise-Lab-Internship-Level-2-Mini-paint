@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const ComponentContainer = styled.div`
+  position: relative;
   border: 1px solid ${(props) => props.theme.drawingPanel.border};
   padding: 7px;
   width: 100px;
@@ -31,4 +32,20 @@ export const Icon = styled.p`
   &:hover {
     background-color: ${(props) => props.theme.drawingPanel.iconBgHover};
   }
+`;
+
+export const Range = styled.span`
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  display: flex;
+  border: 2px solid ${(props) => props.theme.drawingPanel.border};
+  background-color: ${(props) => props.theme.drawingPanel.thicknessBg};
+  height: 30px;
+`;
+
+export const Palette = styled.span`
+  position: absolute;
+  top: 102px;
+  right: 0px;
 `;
