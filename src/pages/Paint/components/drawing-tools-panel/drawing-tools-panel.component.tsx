@@ -16,7 +16,7 @@ import {
   selectColor,
   selectThickness,
   selectTool,
-} from '../../../../core/selectors/selectors';
+} from '../../../../core/selectors/draw.selectors';
 import {
   ComponentContainer,
   IconsContainer,

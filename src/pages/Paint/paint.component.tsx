@@ -4,7 +4,7 @@ import line from '../../shared/helpers/line.helpers';
 import rectangle from '../../shared/helpers/rect.helpers';
 import circle from '../../shared/helpers/circle.helpers';
 import brush from '../../shared/helpers/brush.helpers';
-import DrawingToolsPanelComponent from './components/drawing-tools-panel/drawing-tools-panel.component';
+import { DrawingToolsPanel } from './components/drawing-tools-panel';
 import { CanvasSize } from '../../shared/constants/canvas-size.constants';
 import { Coordinates, ListOfTools } from '../../core/interfaces/draw.interface';
 import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
@@ -12,7 +12,7 @@ import {
   selectColor,
   selectThickness,
   selectTool,
-} from '../../core/selectors/selectors';
+} from '../../core/selectors/draw.selectors';
 import { Container, Title, Canvas, DrawingContainer } from './paint.styles';
 
 const tools: ListOfTools = {
@@ -83,7 +83,7 @@ const PaintComponent: FC = (): JSX.Element => {
     <Container>
       <Title>Paint</Title>
       <DrawingContainer>
-        <DrawingToolsPanelComponent />
+        <DrawingToolsPanel />
         <Canvas
           id="canvas"
           ref={canvasRef}
