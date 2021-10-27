@@ -7,12 +7,18 @@ interface InitialState {
   currentTool: string;
   thickness: number;
   color: string;
+  errors: {
+    picError: string;
+  };
 }
 
 const initialState: InitialState = {
   currentTool: 'line',
   thickness: 3,
   color: '#000000',
+  errors: {
+    picError: '',
+  },
 };
 
 const drawReducer = handleActions<InitialState>(
@@ -33,6 +39,24 @@ const drawReducer = handleActions<InitialState>(
     [DrawActionsTypes.SET_COLOR]: (state: InitialState, action: AnyAction) => ({
       ...state,
       color: action.payload.color,
+    }),
+
+    [DrawActionsTypes.SEND_PIC]: (state: InitialState) => ({
+      ...state,
+    }),
+
+    [DrawActionsTypes.SEND_PIC_SUCCESS]: (state: InitialState) => ({
+      ...state,
+    }),
+
+    [DrawActionsTypes.SEND_PIC_ERROR]: (
+      state: InitialState,
+      action: AnyAction
+    ) => ({
+      ...state,
+      errors: {
+        picError: action.payload.picError,
+      },
     }),
   },
 
