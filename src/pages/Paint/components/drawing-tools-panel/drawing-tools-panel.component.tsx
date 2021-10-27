@@ -23,6 +23,7 @@ import {
   Icon,
   Range,
   Palette,
+  Title,
 } from './drawing-tools-panel.styles';
 
 const DrawingToolsPanelComponent: FC = (): JSX.Element => {
@@ -54,7 +55,7 @@ const DrawingToolsPanelComponent: FC = (): JSX.Element => {
 
   return (
     <ComponentContainer>
-      <p>Painting tools</p>
+      <Title>Painting tools</Title>
       <IconsContainer>
         <Icon title="line thickness" onClick={toggleThicknessPanel}>
           {ThicknessIcon}

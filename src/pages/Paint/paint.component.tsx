@@ -8,6 +8,7 @@ import eraser from '../../shared/helpers/eraser.helpers';
 import circleFill from '../../shared/helpers/circle-fill.helpers';
 import rectangleFill from '../../shared/helpers/rect-fill.helpers';
 import { DrawingToolsPanel } from './components/drawing-tools-panel';
+import { ButtonsPanel } from './components/buttons-panel';
 import { CanvasSize } from '../../shared/constants/canvas-size.constants';
 import { Coordinates, ListOfTools } from '../../core/interfaces/draw.interface';
 import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
@@ -90,7 +91,7 @@ const PaintComponent: FC = (): JSX.Element => {
 
   return (
     <Container>
-      <Title>Paint</Title>
+      <Title>Happy Drawing!</Title>
       <DrawingContainer>
         <DrawingToolsPanel />
         <Canvas
@@ -103,6 +104,7 @@ const PaintComponent: FC = (): JSX.Element => {
           onMouseLeave={onMouseUp}
           onMouseMove={onMouseMove}
         ></Canvas>
+        <ButtonsPanel />
       </DrawingContainer>
     </Container>
   );

@@ -39,4 +39,10 @@ export const BlueTheme = {
     selectedTool: '#07a9fa',
     thicknessBg: '#ffffff',
   },
+  buttonsPanel: {
+    border: '#003f87',
+    bg: '#ffffff',
+    bgHover: '#73b2fa',
+    textHover: '#ffffff',
+  },
 };
