@@ -104,7 +104,7 @@ const PaintComponent: FC = (): JSX.Element => {
           onMouseLeave={onMouseUp}
           onMouseMove={onMouseMove}
         ></Canvas>
-        <ButtonsPanel />
+        <ButtonsPanel context={context} />
       </DrawingContainer>
     </Container>
   );

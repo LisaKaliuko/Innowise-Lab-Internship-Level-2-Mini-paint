@@ -1,9 +1,19 @@
 import React, { FC } from 'react';
 
+import { CanvasSize } from '../../../../shared/constants/canvas-size.constants';
 import { Container, Button } from './buttons-panel.styles';
 
-const ButtonsPanelComponent: FC = (): JSX.Element => {
-  const clearSheet = () => console.log('clear sheet');
+interface ButtonsPanelProps {
+  context: CanvasRenderingContext2D | null;
+}
+
+const ButtonsPanelComponent: FC<ButtonsPanelProps> = ({
+  context,
+}): JSX.Element => {
+  const clearSheet = () => {
+    if (context) context.clearRect(0, 0, CanvasSize.width, CanvasSize.height);
+  };
+
   const savePicture = () => console.log('save picture');
   const toGallery = () => console.log('go to gallery');
 
