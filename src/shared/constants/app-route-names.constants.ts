@@ -3,4 +3,5 @@ export enum AppRouteNames {
   Login = '/login',
   Register = '/register',
   Paint = '/paint',
+  Gallery = '/gallery',
 }
