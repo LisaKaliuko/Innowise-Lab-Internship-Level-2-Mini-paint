@@ -5,6 +5,8 @@ import rectangle from '../../shared/helpers/rect.helpers';
 import circle from '../../shared/helpers/circle.helpers';
 import brush from '../../shared/helpers/brush.helpers';
 import eraser from '../../shared/helpers/eraser.helpers';
+import circleFill from '../../shared/helpers/circle-fill.helpers';
+import rectangleFill from '../../shared/helpers/rect-fill.helpers';
 import { DrawingToolsPanel } from './components/drawing-tools-panel';
 import { CanvasSize } from '../../shared/constants/canvas-size.constants';
 import { Coordinates, ListOfTools } from '../../core/interfaces/draw.interface';
@@ -22,6 +24,8 @@ const tools: ListOfTools = {
   circle: circle,
   brush: brush,
   eraser: eraser,
+  ['fill circle']: circleFill,
+  ['fill rectangle']: rectangleFill,
 };
 
 const PaintComponent: FC = (): JSX.Element => {
@@ -49,6 +53,7 @@ const PaintComponent: FC = (): JSX.Element => {
     if (context) {
       context.lineWidth = currentThickness;
       context.strokeStyle = currentColor;
+      context.fillStyle = currentColor;
     }
 
     const startPosition: Coordinates = tools[currentTool].onMouseDown({
