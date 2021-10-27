@@ -9,7 +9,7 @@ import { Loader } from '../loader';
 import { AppRouteNames } from '../../shared/constants/app-route-names.constants';
 import { PrivateRoute } from '../../shared/components/private-route';
 import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
-import { selectUser } from '../../core/selectors/selectors';
+import { selectUser } from '../../core/selectors/auth.selectors';
 import { Form } from '../form';
 import {
   LoginFormData,

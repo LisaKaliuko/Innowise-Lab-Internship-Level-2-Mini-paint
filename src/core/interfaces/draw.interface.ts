@@ -12,13 +12,14 @@ export interface Coordinates {
 
 export interface OnMouseDownArguments {
   e: MouseEvent;
+  context: CanvasRenderingContext2D | undefined | null;
   canvasOffset: Coordinates;
   setIsPainting: (isPainting: boolean) => void;
 }
 
 export interface OnMouseMoveArguments {
   e: MouseEvent;
-  context: CanvasRenderingContext2D | undefined;
+  context: CanvasRenderingContext2D | undefined | null;
   canvasOffset: Coordinates;
   isPainting: boolean;
   startDrawingPos: Coordinates;

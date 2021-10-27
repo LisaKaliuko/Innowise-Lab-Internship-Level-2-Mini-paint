@@ -37,5 +37,6 @@ export const BlueTheme = {
     border: '#000000',
     iconBgHover: '#b0b0b0',
     selectedTool: '#07a9fa',
+    thicknessBg: '#ffffff',
   },
 };

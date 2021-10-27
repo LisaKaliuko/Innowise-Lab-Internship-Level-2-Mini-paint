@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { selectAuthLoading } from '../../core/selectors/selectors';
+import { selectAuthLoading } from '../../core/selectors/auth.selectors';
 import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
 import { LoaderContainer, LoaderItem } from './loader.styles';
 

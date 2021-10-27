@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import { selectUser } from '../../../core/selectors/selectors';
+import { selectUser } from '../../../core/selectors/auth.selectors';
 import { useTypedSelector } from '../../../core/hooks/use-typed-selector.hook';
 
 interface PrivateRouteProps {

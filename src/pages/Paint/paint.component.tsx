@@ -3,17 +3,23 @@ import React, { FC, useEffect, useRef, useState, MouseEvent } from 'react';
 import line from '../../shared/helpers/line.helpers';
 import rectangle from '../../shared/helpers/rect.helpers';
 import circle from '../../shared/helpers/circle.helpers';
-import DrawingToolsPanelComponent from './components/drawing-tools-panel/drawing-tools-panel.component';
+import brush from '../../shared/helpers/brush.helpers';
+import { DrawingToolsPanel } from './components/drawing-tools-panel';
 import { CanvasSize } from '../../shared/constants/canvas-size.constants';
 import { Coordinates, ListOfTools } from '../../core/interfaces/draw.interface';
 import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
-import { selectCurrentTool } from '../../core/selectors/selectors';
+import {
+  selectColor,
+  selectThickness,
+  selectTool,
+} from '../../core/selectors/draw.selectors';
 import { Container, Title, Canvas, DrawingContainer } from './paint.styles';
 
 const tools: ListOfTools = {
   line: line,
   rectangle: rectangle,
   circle: circle,
+  brush: brush,
 };
 
 const PaintComponent: FC = (): JSX.Element => {
@@ -23,7 +29,9 @@ const PaintComponent: FC = (): JSX.Element => {
   const [isPainting, setIsPainting] = useState(false);
   const [canvasData, setCanvasData] = useState<ImageData | undefined>();
   const [startDrawingPos, setStartDrawingPos] = useState({ top: 0, left: 0 });
-  const currentTool = useTypedSelector(selectCurrentTool);
+  const currentTool = useTypedSelector(selectTool);
+  const currentThickness = useTypedSelector(selectThickness);
+  const currentColor = useTypedSelector(selectColor);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -38,6 +46,7 @@ const PaintComponent: FC = (): JSX.Element => {
   const onMouseDown = (e: MouseEvent) => {
     const startPosition: Coordinates = tools[currentTool].onMouseDown({
       e,
+      context,
       canvasOffset,
       setIsPainting,
     });
@@ -57,7 +66,8 @@ const PaintComponent: FC = (): JSX.Element => {
 
   const onMouseMove = (e: MouseEvent) => {
     if (context) {
-      context.lineWidth = 1;
+      context.lineWidth = currentThickness;
+      context.strokeStyle = currentColor;
       tools[currentTool].onMouseMove({
         e,
         context,
@@ -73,7 +83,7 @@ const PaintComponent: FC = (): JSX.Element => {
     <Container>
       <Title>Paint</Title>
       <DrawingContainer>
-        <DrawingToolsPanelComponent />
+        <DrawingToolsPanel />
         <Canvas
           id="canvas"
           ref={canvasRef}
