@@ -4,6 +4,7 @@ import {
   LineIcon,
   CircleIcon,
   BrushIcon,
+  EraserIcon,
 } from '../components/icons/icons';
 
 export const TOOLS: Array<Tool> = [
@@ -11,4 +12,5 @@ export const TOOLS: Array<Tool> = [
   { value: 'line', icon: LineIcon },
   { value: 'rectangle', icon: RectangleIcon },
   { value: 'circle', icon: CircleIcon },
+  { value: 'eraser', icon: EraserIcon },
 ];

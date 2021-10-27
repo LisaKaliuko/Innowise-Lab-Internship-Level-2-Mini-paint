@@ -4,6 +4,7 @@ import line from '../../shared/helpers/line.helpers';
 import rectangle from '../../shared/helpers/rect.helpers';
 import circle from '../../shared/helpers/circle.helpers';
 import brush from '../../shared/helpers/brush.helpers';
+import eraser from '../../shared/helpers/eraser.helpers';
 import { DrawingToolsPanel } from './components/drawing-tools-panel';
 import { CanvasSize } from '../../shared/constants/canvas-size.constants';
 import { Coordinates, ListOfTools } from '../../core/interfaces/draw.interface';
@@ -20,6 +21,7 @@ const tools: ListOfTools = {
   rectangle: rectangle,
   circle: circle,
   brush: brush,
+  eraser: eraser,
 };
 
 const PaintComponent: FC = (): JSX.Element => {
@@ -44,6 +46,11 @@ const PaintComponent: FC = (): JSX.Element => {
   }, []);
 
   const onMouseDown = (e: MouseEvent) => {
+    if (context) {
+      context.lineWidth = currentThickness;
+      context.strokeStyle = currentColor;
+    }
+
     const startPosition: Coordinates = tools[currentTool].onMouseDown({
       e,
       context,
@@ -53,11 +60,10 @@ const PaintComponent: FC = (): JSX.Element => {
 
     setStartDrawingPos(startPosition);
 
-    if (context) {
+    if (context)
       setCanvasData(
         context.getImageData(0, 0, CanvasSize.width, CanvasSize.height)
       );
-    }
   };
 
   const onMouseUp = () => {
@@ -66,8 +72,6 @@ const PaintComponent: FC = (): JSX.Element => {
 
   const onMouseMove = (e: MouseEvent) => {
     if (context) {
-      context.lineWidth = currentThickness;
-      context.strokeStyle = currentColor;
       tools[currentTool].onMouseMove({
         e,
         context,
