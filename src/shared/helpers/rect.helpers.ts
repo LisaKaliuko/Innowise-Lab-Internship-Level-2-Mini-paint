@@ -27,18 +27,41 @@ const rectangle = {
     canvasData,
   }: OnMouseMoveArguments): void => {
     if (isPainting && context && canvasData) {
-      const finishPos: { x: number; y: number } = {
-        x: e.pageX - canvasOffset.left,
-        y: e.pageY - canvasOffset.top,
+      const rectangle = {
+        width: e.pageX - canvasOffset.left - startDrawingPos.left,
+        height: e.pageY - canvasOffset.top - startDrawingPos.top,
       };
+
       context.clearRect(0, 0, CanvasSize.width, CanvasSize.height);
       context.putImageData(canvasData, 0, 0);
-      context.strokeRect(
-        startDrawingPos.left,
-        startDrawingPos.top,
-        finishPos.x - startDrawingPos.left,
-        finishPos.y - startDrawingPos.top
-      );
+
+      if (e.shiftKey) {
+        let rectangleHeight: number;
+
+        if (rectangle.height < 0 && rectangle.width > 0) {
+          rectangleHeight = -rectangle.width;
+        } else if (rectangle.height < 0 && rectangle.width < 0) {
+          rectangleHeight = rectangle.width;
+        } else if (rectangle.height > 0 && rectangle.width < 0) {
+          rectangleHeight = -rectangle.width;
+        } else {
+          rectangleHeight = rectangle.width;
+        }
+
+        context.strokeRect(
+          startDrawingPos.left,
+          startDrawingPos.top,
+          rectangle.width,
+          rectangleHeight
+        );
+      } else {
+        context.strokeRect(
+          startDrawingPos.left,
+          startDrawingPos.top,
+          rectangle.width,
+          rectangle.height
+        );
+      }
     }
   },
 };

@@ -37,15 +37,39 @@ const circle = {
       context.clearRect(0, 0, CanvasSize.width, CanvasSize.height);
       context.putImageData(canvasData, 0, 0);
       context.beginPath();
-      context.ellipse(
-        startDrawingPos.left + radiusX,
-        startDrawingPos.top + radiusY,
-        Math.abs(radiusX),
-        Math.abs(radiusY),
-        0,
-        0,
-        2 * Math.PI
-      );
+
+      if (e.shiftKey) {
+        let ellipseHeightRadius: number;
+
+        if (radiusY < 0 && radiusX > 0) {
+          ellipseHeightRadius = startDrawingPos.left - radiusY;
+        } else if (radiusY < 0 && radiusX < 0) {
+          ellipseHeightRadius = startDrawingPos.left + radiusY;
+        } else if (radiusY > 0 && radiusX < 0) {
+          ellipseHeightRadius = startDrawingPos.left - radiusY;
+        } else {
+          ellipseHeightRadius = startDrawingPos.left + radiusY;
+        }
+
+        context.arc(
+          ellipseHeightRadius,
+          startDrawingPos.top + radiusY,
+          Math.abs(radiusY),
+          0,
+          2 * Math.PI
+        );
+      } else {
+        context.ellipse(
+          startDrawingPos.left + radiusX,
+          startDrawingPos.top + radiusY,
+          Math.abs(radiusX),
+          Math.abs(radiusY),
+          0,
+          0,
+          2 * Math.PI
+        );
+      }
+
       context.stroke();
     }
   },
