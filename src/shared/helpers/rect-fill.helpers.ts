@@ -5,7 +5,7 @@ import {
 } from '../../core/interfaces/draw.interface';
 import { CanvasSize } from '../constants/canvas-size.constants';
 
-const rectangle = {
+const rectangleFill = {
   onMouseDown: ({
     e,
     canvasOffset,
@@ -48,14 +48,14 @@ const rectangle = {
             rectangle.width < 0 ? -rectangle.width : rectangle.width;
         }
 
-        context.strokeRect(
+        context.fillRect(
           startDrawingPos.left,
           startDrawingPos.top,
           rectangle.width,
           rectangleHeight
         );
       } else {
-        context.strokeRect(
+        context.fillRect(
           startDrawingPos.left,
           startDrawingPos.top,
           rectangle.width,
@@ -66,4 +66,4 @@ const rectangle = {
   },
 };
 
-export default rectangle;
+export default rectangleFill;

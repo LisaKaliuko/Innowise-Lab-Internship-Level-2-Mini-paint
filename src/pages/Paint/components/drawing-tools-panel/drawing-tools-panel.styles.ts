@@ -2,9 +2,14 @@ import styled, { css } from 'styled-components';
 
 export const ComponentContainer = styled.div`
   position: relative;
-  border: 1px solid ${(props) => props.theme.drawingPanel.border};
+  border: 2px solid ${(props) => props.theme.drawingPanel.border};
   padding: 7px;
   width: 100px;
+`;
+
+export const Title = styled.h3`
+  margin: 5px 0px 10px 0px;
+  text-align: center;
 `;
 
 export const IconsContainer = styled.div`
@@ -14,7 +19,7 @@ export const IconsContainer = styled.div`
 `;
 
 export const Icon = styled.p`
-  border: 1px solid ${(props) => props.theme.drawingPanel.border};
+  border: 2px solid ${(props) => props.theme.drawingPanel.border};
   border-radius: 5px;
   padding: 3px;
   margin: 5px;
@@ -36,8 +41,8 @@ export const Icon = styled.p`
 
 export const Range = styled.span`
   position: absolute;
-  top: 20px;
-  left: -10px;
+  top: 30px;
+  left: -11px;
   display: flex;
   border: 2px solid ${(props) => props.theme.drawingPanel.border};
   background-color: ${(props) => props.theme.drawingPanel.thicknessBg};
@@ -46,6 +51,6 @@ export const Range = styled.span`
 
 export const Palette = styled.span`
   position: absolute;
-  top: 102px;
-  right: 0px;
+  top: 70px;
+  right: -45px;
 `;

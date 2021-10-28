@@ -43,3 +43,8 @@ export interface ListOfTools {
     }: OnMouseMoveArguments) => void;
   };
 }
+
+export interface PicObj {
+  user: string;
+  picData: string;
+}

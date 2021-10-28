@@ -4,7 +4,11 @@ import line from '../../shared/helpers/line.helpers';
 import rectangle from '../../shared/helpers/rect.helpers';
 import circle from '../../shared/helpers/circle.helpers';
 import brush from '../../shared/helpers/brush.helpers';
+import eraser from '../../shared/helpers/eraser.helpers';
+import circleFill from '../../shared/helpers/circle-fill.helpers';
+import rectangleFill from '../../shared/helpers/rect-fill.helpers';
 import { DrawingToolsPanel } from './components/drawing-tools-panel';
+import { ButtonsPanel } from './components/buttons-panel';
 import { CanvasSize } from '../../shared/constants/canvas-size.constants';
 import { Coordinates, ListOfTools } from '../../core/interfaces/draw.interface';
 import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
@@ -20,6 +24,9 @@ const tools: ListOfTools = {
   rectangle: rectangle,
   circle: circle,
   brush: brush,
+  eraser: eraser,
+  ['fill circle']: circleFill,
+  ['fill rectangle']: rectangleFill,
 };
 
 const PaintComponent: FC = (): JSX.Element => {
@@ -43,7 +50,20 @@ const PaintComponent: FC = (): JSX.Element => {
     }
   }, []);
 
+  useEffect(() => {
+    if (context) {
+      context.fillStyle = '#FFFFFF';
+      context.fillRect(0, 0, CanvasSize.width, CanvasSize.height);
+    }
+  }, [context]);
+
   const onMouseDown = (e: MouseEvent) => {
+    if (context) {
+      context.lineWidth = currentThickness;
+      context.strokeStyle = currentColor;
+      context.fillStyle = currentColor;
+    }
+
     const startPosition: Coordinates = tools[currentTool].onMouseDown({
       e,
       context,
@@ -53,11 +73,10 @@ const PaintComponent: FC = (): JSX.Element => {
 
     setStartDrawingPos(startPosition);
 
-    if (context) {
+    if (context)
       setCanvasData(
         context.getImageData(0, 0, CanvasSize.width, CanvasSize.height)
       );
-    }
   };
 
   const onMouseUp = () => {
@@ -66,8 +85,6 @@ const PaintComponent: FC = (): JSX.Element => {
 
   const onMouseMove = (e: MouseEvent) => {
     if (context) {
-      context.lineWidth = currentThickness;
-      context.strokeStyle = currentColor;
       tools[currentTool].onMouseMove({
         e,
         context,
@@ -81,7 +98,7 @@ const PaintComponent: FC = (): JSX.Element => {
 
   return (
     <Container>
-      <Title>Paint</Title>
+      <Title>Happy Drawing!</Title>
       <DrawingContainer>
         <DrawingToolsPanel />
         <Canvas
@@ -94,6 +111,7 @@ const PaintComponent: FC = (): JSX.Element => {
           onMouseLeave={onMouseUp}
           onMouseMove={onMouseMove}
         ></Canvas>
+        <ButtonsPanel context={context} canvasRef={canvasRef} />
       </DrawingContainer>
     </Container>
   );

@@ -6,6 +6,7 @@ import { Footer } from '../footer';
 import { MainPage } from '../../pages/main-page';
 import { Paint } from '../../pages/paint';
 import { Loader } from '../loader';
+import { Gallery } from '../../pages/gallery';
 import { AppRouteNames } from '../../shared/constants/app-route-names.constants';
 import { PrivateRoute } from '../../shared/components/private-route';
 import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
@@ -40,6 +41,9 @@ const RouterComponent: FC = (): JSX.Element => {
         </Route>
         <PrivateRoute path={AppRouteNames.Paint}>
           <Paint />
+        </PrivateRoute>
+        <PrivateRoute path={AppRouteNames.Gallery}>
+          <Gallery />
         </PrivateRoute>
       </Switch>
       <Footer />
