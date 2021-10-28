@@ -50,6 +50,13 @@ const PaintComponent: FC = (): JSX.Element => {
     }
   }, []);
 
+  useEffect(() => {
+    if (context) {
+      context.fillStyle = '#FFFFFF';
+      context.fillRect(0, 0, CanvasSize.width, CanvasSize.height);
+    }
+  }, [context]);
+
   const onMouseDown = (e: MouseEvent) => {
     if (context) {
       context.lineWidth = currentThickness;
