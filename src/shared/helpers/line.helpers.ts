@@ -26,7 +26,9 @@ const line = {
     startDrawingPos,
     canvasData,
   }: OnMouseMoveArguments): void => {
-    if (isPainting && context && canvasData) {
+    const isCanDraw = isPainting && context && canvasData;
+
+    if (isCanDraw) {
       const finishPos: { x: number; y: number } = {
         x: e.pageX - canvasOffset.left,
         y: e.pageY - canvasOffset.top,

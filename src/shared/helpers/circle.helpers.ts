@@ -26,7 +26,8 @@ const circle = {
     startDrawingPos,
     canvasData,
   }: OnMouseMoveArguments): void => {
-    if (isPainting && context && canvasData) {
+    const isCanDraw = isPainting && context && canvasData;
+    if (isCanDraw) {
       const radiusX: number = Math.round(
         (e.pageX - canvasOffset.left - startDrawingPos.left) / 2
       );
@@ -41,14 +42,16 @@ const circle = {
       if (e.shiftKey) {
         let ellipseHeightRadius: number;
 
-        if (radiusY < 0 && radiusX > 0) {
-          ellipseHeightRadius = startDrawingPos.left - radiusY;
-        } else if (radiusY < 0 && radiusX < 0) {
-          ellipseHeightRadius = startDrawingPos.left + radiusY;
-        } else if (radiusY > 0 && radiusX < 0) {
-          ellipseHeightRadius = startDrawingPos.left - radiusY;
+        if (radiusY < 0) {
+          ellipseHeightRadius =
+            radiusX > 0
+              ? startDrawingPos.left - radiusY
+              : startDrawingPos.left + radiusY;
         } else {
-          ellipseHeightRadius = startDrawingPos.left + radiusY;
+          ellipseHeightRadius =
+            radiusX < 0
+              ? startDrawingPos.left - radiusY
+              : startDrawingPos.left + radiusY;
         }
 
         context.arc(

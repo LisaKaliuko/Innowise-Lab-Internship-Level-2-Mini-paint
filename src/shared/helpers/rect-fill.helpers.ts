@@ -26,7 +26,9 @@ const rectangleFill = {
     startDrawingPos,
     canvasData,
   }: OnMouseMoveArguments): void => {
-    if (isPainting && context && canvasData) {
+    const isCanDraw = isPainting && context && canvasData;
+
+    if (isCanDraw) {
       const rectangle = {
         width: e.pageX - canvasOffset.left - startDrawingPos.left,
         height: e.pageY - canvasOffset.top - startDrawingPos.top,
@@ -38,14 +40,12 @@ const rectangleFill = {
       if (e.shiftKey) {
         let rectangleHeight: number;
 
-        if (rectangle.height < 0 && rectangle.width > 0) {
-          rectangleHeight = -rectangle.width;
-        } else if (rectangle.height < 0 && rectangle.width < 0) {
-          rectangleHeight = rectangle.width;
-        } else if (rectangle.height > 0 && rectangle.width < 0) {
-          rectangleHeight = -rectangle.width;
+        if (rectangle.height < 0) {
+          rectangleHeight =
+            rectangle.width > 0 ? -rectangle.width : rectangle.width;
         } else {
-          rectangleHeight = rectangle.width;
+          rectangleHeight =
+            rectangle.width < 0 ? -rectangle.width : rectangle.width;
         }
 
         context.fillRect(
