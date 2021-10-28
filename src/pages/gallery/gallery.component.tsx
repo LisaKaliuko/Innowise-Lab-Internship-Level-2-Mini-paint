@@ -25,9 +25,7 @@ const GalleryComponent: FC = (): JSX.Element => {
       <h1>Gallery</h1>
       <PicsContainer>
         {arrOfPics.length !== 0 &&
-          arrOfPics.map((pic) => {
-            const { user, picData } = pic;
-
+          arrOfPics.map(({ user, picData }) => {
             return (
               <PictureBlock key={picData}>
                 <img src={picData} alt="pic" />
