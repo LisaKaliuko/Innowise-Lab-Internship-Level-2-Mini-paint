@@ -5,8 +5,11 @@ import {
   DrawActionsTypes,
   sendPicSuccess,
   sendPicError,
+  getAllPicsSuccess,
+  getAllPicsError,
 } from '../actions/draw.actions';
-import { sendPic } from '../services/draw.service';
+import { sendPic, getPics } from '../services/draw.service';
+import { PicObj } from '../interfaces/draw.interface';
 
 function* sendPicSaga(action: Action<DrawActionsTypes>) {
   const { picture, user, cb } = action.payload;
@@ -18,6 +21,16 @@ function* sendPicSaga(action: Action<DrawActionsTypes>) {
   }
 }
 
+function* getPicsSaga() {
+  try {
+    const arr: Array<PicObj> = yield call(getPics);
+    if (arr) yield put(getAllPicsSuccess(arr));
+  } catch (e) {
+    yield put(getAllPicsError((e as Error)?.message || 'some error'));
+  }
+}
+
 export function* drawWatcher(): Generator {
   yield takeEvery(DrawActionsTypes.SEND_PIC, sendPicSaga);
+  yield takeEvery(DrawActionsTypes.GET_ALL_PICS, getPicsSaga);
 }

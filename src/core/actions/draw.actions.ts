@@ -1,5 +1,7 @@
 import { createAction } from 'redux-actions';
 
+import { PicObj } from '../interfaces/draw.interface';
+
 export enum DrawActionsTypes {
   SET_TOOL = '[DRAW] SET_TOOL',
 
@@ -10,6 +12,10 @@ export enum DrawActionsTypes {
   SEND_PIC = '[DRAW] SEND_PIC',
   SEND_PIC_SUCCESS = '[DRAW] SEND_PIC_SUCCESS',
   SEND_PIC_ERROR = '[DRAW] SEND_PIC_ERROR',
+
+  GET_ALL_PICS = '[DRAW] GET_ALL_PICS',
+  GET_ALL_PICS_SUCCESS = '[DRAW] GET_ALL_PICS_SUCCESS',
+  GET_ALL_PICS_ERROR = '[DRAW] GET_ALL_PICS_ERROR',
 }
 
 export const chooseTool = createAction(
@@ -34,4 +40,16 @@ export const sendPicSuccess = createAction(DrawActionsTypes.SEND_PIC_SUCCESS);
 export const sendPicError = createAction(
   DrawActionsTypes.SEND_PIC_ERROR,
   (picError: string) => ({ picError })
+);
+
+export const getAllPics = createAction(DrawActionsTypes.GET_ALL_PICS);
+
+export const getAllPicsSuccess = createAction(
+  DrawActionsTypes.GET_ALL_PICS_SUCCESS,
+  (arr: Array<PicObj>) => ({ arr })
+);
+
+export const getAllPicsError = createAction(
+  DrawActionsTypes.GET_ALL_PICS_ERROR,
+  (getPicsErr: string) => ({ getPicsErr })
 );

@@ -12,3 +12,10 @@ export const selectThickness = createSelector(
 );
 
 export const selectColor = createSelector(getDraw, (draw) => draw.color);
+
+export const selectAllPics = createSelector(getDraw, (draw) => draw.allPics);
+
+export const selectDrawLoading = createSelector(
+  getDraw,
+  (draw) => draw.isLoading
+);

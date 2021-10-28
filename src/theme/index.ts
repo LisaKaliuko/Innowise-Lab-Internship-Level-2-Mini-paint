@@ -45,4 +45,7 @@ export const BlueTheme = {
     bgHover: '#73b2fa',
     textHover: '#ffffff',
   },
+  gallery: {
+    imgBorder: '#000000',
+  },
 };
