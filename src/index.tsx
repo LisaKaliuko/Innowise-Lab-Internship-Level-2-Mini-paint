@@ -10,11 +10,11 @@ import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import 'firebase/auth';
 import 'firebase/firestore';
 
-import App from './app.component';
-import { firebaseConfig } from './config/fb.config';
-import { rootReducer } from './core/reducers/root.reducer';
-import { rootSaga } from './core/saga/root.saga';
-import { loadState, saveState } from './shared/helpers/state.helpers';
+import App from '@src/app.component';
+import { firebaseConfig } from '@config/fb.config';
+import { rootReducer } from '@reducers/root.reducer';
+import { rootSaga } from '@saga/root.saga';
+import { loadState, saveState } from '@helpers/state.helpers';
 
 firebase.initializeApp(firebaseConfig);
 

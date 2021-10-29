@@ -1,22 +1,22 @@
 import React, { FC, useEffect, useRef, useState, MouseEvent } from 'react';
 
-import line from '../../shared/helpers/line.helpers';
-import rectangle from '../../shared/helpers/rect.helpers';
-import circle from '../../shared/helpers/circle.helpers';
-import brush from '../../shared/helpers/brush.helpers';
-import eraser from '../../shared/helpers/eraser.helpers';
-import circleFill from '../../shared/helpers/circle-fill.helpers';
-import rectangleFill from '../../shared/helpers/rect-fill.helpers';
+import line from '@helpers/line.helpers';
+import rectangle from '@helpers/rect.helpers';
+import circle from '@helpers/circle.helpers';
+import brush from '@helpers/brush.helpers';
+import eraser from '@helpers/eraser.helpers';
+import circleFill from '@helpers/circle-fill.helpers';
+import rectangleFill from '@helpers/rect-fill.helpers';
 import { DrawingToolsPanel } from './components/drawing-tools-panel';
 import { ButtonsPanel } from './components/buttons-panel';
-import { CanvasSize } from '../../shared/constants/canvas-size.constants';
-import { Coordinates, ListOfTools } from '../../core/interfaces/draw.interface';
-import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
+import { CanvasSize } from '@constants/canvas-size.constants';
+import { Coordinates, ListOfTools } from '@interfaces/draw.interface';
+import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import {
   selectColor,
   selectThickness,
   selectTool,
-} from '../../core/selectors/draw.selectors';
+} from '@selectors/draw.selectors';
 import { Container, Title, Canvas, DrawingContainer } from './paint.styles';
 
 const tools: ListOfTools = {

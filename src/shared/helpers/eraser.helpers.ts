@@ -2,7 +2,7 @@ import {
   Coordinates,
   OnMouseDownArguments,
   OnMouseMoveArguments,
-} from '../../core/interfaces/draw.interface';
+} from '@interfaces/draw.interface';
 
 const eraser = {
   onMouseDown: ({

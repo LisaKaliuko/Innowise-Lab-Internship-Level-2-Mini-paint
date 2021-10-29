@@ -1,4 +1,4 @@
-import { auth } from '../../index';
+import { auth } from '@src/index';
 
 export const registerUser = (
   email: string,

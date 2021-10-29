@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { Router } from './components/router';
-import { BlueTheme } from './theme';
+import { Router } from '@components/router';
+import { BlueTheme } from '@theme/index';
 
 const AppComponent: FC = (): JSX.Element => {
   return (

@@ -3,19 +3,19 @@ import { Switch, Route, Redirect } from 'react-router';
 
 import { Header } from '../header';
 import { Footer } from '../footer';
-import { MainPage } from '../../pages/main-page';
-import { Paint } from '../../pages/paint';
+import { MainPage } from '@pages/main-page';
+import { Paint } from '@pages/paint';
 import { Loader } from '../loader';
-import { Gallery } from '../../pages/gallery';
-import { AppRouteNames } from '../../shared/constants/app-route-names.constants';
-import { PrivateRoute } from '../../shared/components/private-route';
-import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
-import { selectUser } from '../../core/selectors/auth.selectors';
+import { Gallery } from '@pages/gallery';
+import { AppRouteNames } from '@constants/app-route-names.constants';
+import { PrivateRoute } from '@private-route/index';
+import { useTypedSelector } from '@hooks/use-typed-selector.hook';
+import { selectUser } from '@selectors/auth.selectors';
 import { Form } from '../form';
 import {
   LoginFormData,
   RegisterFormData,
-} from '../../shared/constants/forms-data.constants';
+} from '@constants/forms-data.constants';
 
 const RouterComponent: FC = (): JSX.Element => {
   const user = useTypedSelector(selectUser);

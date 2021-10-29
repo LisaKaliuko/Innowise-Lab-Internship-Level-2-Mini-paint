@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getAllPics } from '../../core/actions/draw.actions';
-import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
-import { PicObj } from '../../core/interfaces/draw.interface';
-import { selectAllPics } from '../../core/selectors/draw.selectors';
+import { getAllPics } from '@actions/draw.actions';
+import { useTypedSelector } from '@hooks/use-typed-selector.hook';
+import { PicObj } from '@interfaces/draw.interface';
+import { selectAllPics } from '@selectors/draw.selectors';
 import {
   PageContainer,
   PicsContainer,

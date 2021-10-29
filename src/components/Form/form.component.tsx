@@ -2,9 +2,9 @@ import React, { FC, useState, ChangeEvent, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { login, register } from '../../core/actions/auth.actions';
-import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
-import { selectAuthErrors } from '../../core/selectors/auth.selectors';
+import { login, register } from '@actions/auth.actions';
+import { useTypedSelector } from '@hooks/use-typed-selector.hook';
+import { selectAuthErrors } from '@selectors/auth.selectors';
 import {
   Form,
   Title,

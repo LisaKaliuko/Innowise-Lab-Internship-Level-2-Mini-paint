@@ -1,4 +1,4 @@
-import { RootState } from '../../core/reducers/root.reducer';
+import { RootState } from '@reducers/root.reducer';
 
 export const saveState = (state: RootState): void => {
   const serialisedState = JSON.stringify(state);

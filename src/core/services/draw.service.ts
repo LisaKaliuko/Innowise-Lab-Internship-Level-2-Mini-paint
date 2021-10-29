@@ -1,4 +1,4 @@
-import { firestore } from '../..';
+import { firestore } from '@src/index';
 import { PicObj } from '../interfaces/draw.interface';
 
 export const sendPic = (
