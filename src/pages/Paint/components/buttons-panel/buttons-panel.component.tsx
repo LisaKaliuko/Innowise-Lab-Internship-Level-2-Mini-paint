@@ -2,11 +2,11 @@ import React, { FC, RefObject } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 
-import { CanvasSize } from '../../../../shared/constants/canvas-size.constants';
-import { AppRouteNames } from '../../../../shared/constants/app-route-names.constants';
-import { sendPic } from '../../../../core/actions/draw.actions';
-import { useTypedSelector } from '../../../../core/hooks/use-typed-selector.hook';
-import { selectUser } from '../../../../core/selectors/auth.selectors';
+import { CanvasSize } from '@constants/canvas-size.constants';
+import { AppRouteNames } from '@constants/app-route-names.constants';
+import { sendPic } from '@actions/draw.actions';
+import { useTypedSelector } from '@hooks/use-typed-selector.hook';
+import { selectUser } from '@selectors/auth.selectors';
 import { Container, Button } from './buttons-panel.styles';
 
 interface ButtonsPanelProps {

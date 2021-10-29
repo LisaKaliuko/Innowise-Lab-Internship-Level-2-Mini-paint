@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
-import { selectUser } from '../../core/selectors/auth.selectors';
-import { logOut } from '../../core/actions/auth.actions';
-import { AppRouteNames } from '../../shared/constants/app-route-names.constants';
+import { useTypedSelector } from '@hooks/use-typed-selector.hook';
+import { selectUser } from '@selectors/auth.selectors';
+import { logOut } from '@actions/auth.actions';
+import { AppRouteNames } from '@constants/app-route-names.constants';
 import { Menu, Title, Links, LinkItem } from './header.styles';
 
 const HeaderComponent: FC = (): JSX.Element => {

@@ -2,8 +2,8 @@ import {
   Coordinates,
   OnMouseDownArguments,
   OnMouseMoveArguments,
-} from '../../core/interfaces/draw.interface';
-import { CanvasSize } from '../constants/canvas-size.constants';
+} from '@interfaces/draw.interface';
+import { CanvasSize } from '@constants/canvas-size.constants';
 
 const circleFill = {
   onMouseDown: ({

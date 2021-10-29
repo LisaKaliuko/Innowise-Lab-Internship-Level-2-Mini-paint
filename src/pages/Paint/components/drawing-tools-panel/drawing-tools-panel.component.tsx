@@ -1,22 +1,19 @@
 import React, { FC, useState, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { TOOLS } from '../../../../shared/constants/drawing-tools.constants';
+import { TOOLS } from '@constants/drawing-tools.constants';
 import {
   chooseTool,
   chooseThickness,
   chooseColor,
-} from '../../../../core/actions/draw.actions';
-import {
-  ThicknessIcon,
-  PaletteIcon,
-} from '../../../../shared/components/icons/icons';
-import { useTypedSelector } from '../../../../core/hooks/use-typed-selector.hook';
+} from '@actions/draw.actions';
+import { ThicknessIcon, PaletteIcon } from '@icons/icons';
+import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import {
   selectColor,
   selectThickness,
   selectTool,
-} from '../../../../core/selectors/draw.selectors';
+} from '@selectors/draw.selectors';
 import {
   ComponentContainer,
   IconsContainer,
