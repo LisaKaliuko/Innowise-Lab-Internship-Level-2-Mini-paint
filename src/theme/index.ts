@@ -47,5 +47,10 @@ export const BlueTheme = {
   },
   gallery: {
     imgBorder: '#000000',
+    selectBorder: '#003f87',
+    buttonBorder: '#003f87',
+    buttonBg: '#ffffff',
+    buttonBgHover: '#73b2fa',
+    textHover: '#ffffff',
   },
 };

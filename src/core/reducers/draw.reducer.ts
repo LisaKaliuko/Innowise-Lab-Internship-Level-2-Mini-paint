@@ -14,6 +14,7 @@ interface InitialState {
     getPicsErr: string;
   };
   isLoading: boolean;
+  sortEmail: string;
 }
 
 const initialState: InitialState = {
@@ -26,6 +27,7 @@ const initialState: InitialState = {
     getPicsErr: '',
   },
   isLoading: false,
+  sortEmail: '',
 };
 
 const drawReducer = handleActions<InitialState>(
@@ -94,6 +96,14 @@ const drawReducer = handleActions<InitialState>(
         getPicsErr: action.payload.getPicsErr,
       },
       isLoading: false,
+    }),
+
+    [DrawActionsTypes.SET_SORT_EMAIL]: (
+      state: InitialState,
+      action: AnyAction
+    ) => ({
+      ...state,
+      sortEmail: action.payload.sortEmail,
     }),
   },
 
