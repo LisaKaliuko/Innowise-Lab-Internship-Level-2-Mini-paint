@@ -6,6 +6,7 @@ import { login, register } from '@actions/auth.actions';
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import { selectAuthErrors } from '@selectors/auth.selectors';
 import {
+  Container,
   Form,
   Title,
   InputGroup,
@@ -51,33 +52,40 @@ const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
   };
 
   return (
-    <Form onSubmit={enterUser}>
-      <Title>{title}</Title>
-      <p>
-        {text}
-        <Link to={link}>{linkName}</Link>
-      </p>
-      <InputGroup>
-        <Label htmlFor="email">Email</Label>
-        <Input type="email" name="email" value={email} onChange={changeEmail} />
-      </InputGroup>
-      <InputGroup>
-        <Label htmlFor="password">Password</Label>
-        <Input
-          type="password"
-          name="password"
-          value={password}
-          onChange={changePassword}
-        />
-      </InputGroup>
-      <Warning>
-        {title === 'Login' && errors?.loginError ? errors.loginError : ''}
-        {title === 'Registration' && errors?.registerError
-          ? errors.registerError
-          : ''}
-      </Warning>
-      <Button type="submit">{title}</Button>
-    </Form>
+    <Container>
+      <Form onSubmit={enterUser}>
+        <Title>{title}</Title>
+        <p>
+          {text}
+          <Link to={link}>{linkName}</Link>
+        </p>
+        <InputGroup>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            type="email"
+            name="email"
+            value={email}
+            onChange={changeEmail}
+          />
+        </InputGroup>
+        <InputGroup>
+          <Label htmlFor="password">Password</Label>
+          <Input
+            type="password"
+            name="password"
+            value={password}
+            onChange={changePassword}
+          />
+        </InputGroup>
+        <Warning>
+          {title === 'Login' && errors?.loginError ? errors.loginError : ''}
+          {title === 'Registration' && errors?.registerError
+            ? errors.registerError
+            : ''}
+        </Warning>
+        <Button type="submit">{title}</Button>
+      </Form>
+    </Container>
   );
 };
 

@@ -2,19 +2,21 @@ import styled from 'styled-components';
 
 export const PageContainer = styled.div`
   width: 80%;
-  margin: auto;
+  height: 100%;
+  margin: 0px auto;
 `;
 
 export const PicsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 `;
 
 export const PictureBlock = styled.div`
   margin: 10px;
 
   img {
-    width: 250px;
+    width: 300px;
     border: 1px solid ${(props) => props.theme.gallery.imgBorder};
   }
 `;

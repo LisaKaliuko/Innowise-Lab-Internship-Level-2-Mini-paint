@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Footer = styled.footer`
-  position: absolute;
+  flex: 0 0 auto;
   background-color: ${(props) => props.theme.footer.bg};
   display: flex;
   justify-content: space-around;

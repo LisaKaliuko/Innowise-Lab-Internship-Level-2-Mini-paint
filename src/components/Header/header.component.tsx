@@ -30,11 +30,19 @@ const HeaderComponent: FC = (): JSX.Element => {
             </LinkItem>
           </>
         ) : (
-          <LinkItem>
-            <Link to={AppRouteNames.Home} onClick={logOutUser}>
-              Log out
-            </Link>
-          </LinkItem>
+          <>
+            <LinkItem>
+              <Link to={AppRouteNames.Paint}>Paint</Link>
+            </LinkItem>
+            <LinkItem>
+              <Link to={AppRouteNames.Gallery}>Gallery</Link>
+            </LinkItem>
+            <LinkItem>
+              <Link to={AppRouteNames.Home} onClick={logOutUser}>
+                Log out
+              </Link>
+            </LinkItem>
+          </>
         )}
       </Links>
     </Menu>

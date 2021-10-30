@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Content = styled.div`
   width: 40%;
+  height: 100%;
   margin: 50px auto;
 `;
 
