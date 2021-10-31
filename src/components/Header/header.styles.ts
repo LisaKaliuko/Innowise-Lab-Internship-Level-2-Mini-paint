@@ -26,6 +26,7 @@ export const Title = styled.div`
 
 export const Links = styled.ul`
   display: flex;
+  align-items: baseline;
   margin: 0px;
   padding: 0px;
   list-style: none;
