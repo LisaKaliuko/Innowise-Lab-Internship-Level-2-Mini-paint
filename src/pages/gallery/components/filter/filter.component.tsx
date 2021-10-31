@@ -33,15 +33,11 @@ const FilterComponent: FC<FilterComponentProps> = ({
 
   return (
     <div>
-      <Select onChange={chooseUser}>
+      <Select onChange={chooseUser} defaultValue={sortEmail}>
         <option>All</option>
         {uniqueUsers.length !== 0 &&
           uniqueUsers.map((user) => (
-            <option
-              key={user}
-              value={user}
-              selected={user === sortEmail && true}
-            >
+            <option key={user} value={user}>
               {user}
             </option>
           ))}
