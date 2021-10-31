@@ -12,6 +12,8 @@ export enum AuthActionsTypes {
   LOG_OUT = '[AUTH] LOG_OUT',
   LOG_OUT_SUCCESS = '[AUTH] LOG_OUT_SUCCESS',
   LOG_OUT_ERROR = '[AUTH] LOG_OUT_ERROR',
+
+  TOGGLE_THEME = '[AUTH] TOGGLE_THEME',
 }
 
 export const register = createAction(AuthActionsTypes.REGISTER);
@@ -46,3 +48,5 @@ export const logOutError = createAction(
   AuthActionsTypes.LOG_OUT_ERROR,
   (logOutError: string) => ({ logOutError })
 );
+
+export const toggleTheme = createAction(AuthActionsTypes.TOGGLE_THEME);

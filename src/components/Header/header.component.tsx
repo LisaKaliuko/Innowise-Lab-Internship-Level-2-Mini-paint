@@ -3,16 +3,26 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
-import { selectUser } from '@selectors/auth.selectors';
-import { logOut } from '@actions/auth.actions';
+import { selectCreativeTheme, selectUser } from '@selectors/auth.selectors';
+import { logOut, toggleTheme } from '@actions/auth.actions';
 import { AppRouteNames } from '@constants/app-route-names.constants';
-import { Menu, Title, Links, LinkItem } from './header.styles';
+import {
+  Menu,
+  Title,
+  Links,
+  LinkItem,
+  CheckBoxWrapper,
+  CheckBoxLabel,
+  CheckBox,
+} from './header.styles';
 
 const HeaderComponent: FC = (): JSX.Element => {
   const user = useTypedSelector(selectUser);
+  const creativeTheme = useTypedSelector(selectCreativeTheme);
   const dispatch = useDispatch();
 
   const logOutUser = () => dispatch(logOut());
+  const changeTheme = () => dispatch(toggleTheme());
 
   return (
     <Menu>
@@ -44,6 +54,15 @@ const HeaderComponent: FC = (): JSX.Element => {
             </LinkItem>
           </>
         )}
+        <CheckBoxWrapper>
+          <CheckBox
+            id="checkbox"
+            type="checkbox"
+            onClick={changeTheme}
+            defaultChecked={creativeTheme}
+          />
+          <CheckBoxLabel htmlFor="checkbox" />
+        </CheckBoxWrapper>
       </Links>
     </Menu>
   );

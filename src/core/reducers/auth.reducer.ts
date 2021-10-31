@@ -13,6 +13,7 @@ interface InitialState {
     logOutError: string;
   };
   isLoading: boolean;
+  creativeTheme: boolean;
 }
 
 const initialState: InitialState = {
@@ -25,6 +26,7 @@ const initialState: InitialState = {
     logOutError: '',
   },
   isLoading: false,
+  creativeTheme: false,
 };
 
 const authReducer = handleActions<InitialState>(
@@ -74,15 +76,21 @@ const authReducer = handleActions<InitialState>(
       isLoading: true,
     }),
 
-    [AuthActionsTypes.LOG_OUT_SUCCESS]: () => ({
+    [AuthActionsTypes.LOG_OUT_SUCCESS]: (state: InitialState) => ({
       ...initialState,
       isLoading: false,
+      creativeTheme: state.creativeTheme,
     }),
 
     [AuthActionsTypes.LOG_OUT_ERROR]: (
       state: InitialState,
       action: AnyAction
     ) => ({ ...state, errors: { ...action.payload }, isLoading: false }),
+
+    [AuthActionsTypes.TOGGLE_THEME]: (state: InitialState) => ({
+      ...state,
+      creativeTheme: !state.creativeTheme,
+    }),
   },
 
   initialState
