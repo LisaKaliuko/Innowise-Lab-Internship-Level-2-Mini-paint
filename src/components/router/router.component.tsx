@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 
-import { Header } from '../headerN';
-import { Footer } from '../footerN';
+import { Header } from '../header';
+import { Footer } from '../footer';
 import { MainPage } from '@pages/main-page';
-import { Paint } from '@src/pages/paintN';
-import { Loader } from '../loaderN';
+import { Paint } from '@src/pages/paint';
+import { Loader } from '../loader';
 import { Gallery } from '@pages/gallery';
 import { AppRouteNames } from '@constants/app-route-names.constants';
 import { PrivateRoute } from '@private-route/index';
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import { selectUser } from '@selectors/auth.selectors';
-import { Form } from '../formN';
+import { Form } from '../form';
 import {
   LoginFormData,
   RegisterFormData,
