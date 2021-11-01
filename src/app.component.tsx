@@ -5,13 +5,13 @@ import { ThemeProvider } from 'styled-components';
 import { Router } from '@components/router';
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import { selectCreativeTheme } from '@selectors/auth.selectors';
-import { BlueTheme, OrangeTheme } from '@theme/index';
+import { FirstTheme, SecondTheme } from '@theme/index';
 
 const AppComponent: FC = (): JSX.Element => {
   const creativeTheme = useTypedSelector(selectCreativeTheme);
 
   return (
-    <ThemeProvider theme={creativeTheme ? OrangeTheme : BlueTheme}>
+    <ThemeProvider theme={creativeTheme ? SecondTheme : FirstTheme}>
       <BrowserRouter>
         <Router />
       </BrowserRouter>
