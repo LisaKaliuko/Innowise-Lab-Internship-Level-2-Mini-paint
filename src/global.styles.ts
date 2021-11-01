@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
-  div {
+  #root {
     display: flex; 
     flex-direction: column; 
     height: 100%;
