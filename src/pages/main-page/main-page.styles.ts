@@ -42,22 +42,4 @@ export const PrimaryButton = styled.div`
       color: ${(props) => props.theme.primaryButton.textHover};
     }
   }
-
-  img {
-    position: absolute;
-    display: inline-block;
-    width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px ${(props) => props.theme.form.shadow};
-    top: -310%;
-    right: -25%;
-    opacity: 0;
-  }
-
-  &:hover {
-    img {
-      transition: 1.7s;
-      opacity: 1;
-    }
-  }
 `;
