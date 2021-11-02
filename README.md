@@ -1,46 +1,106 @@
-# Getting Started with Create React App
+# Mini-Paint application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Task
 
-## Available Scripts
+[https://docs.google.com/document/d/1K79_NA4lMYfqQiIJGqLDek1K9z-oc2qg8n4AvrN1PXE/edit](https://docs.google.com/document/d/1K79_NA4lMYfqQiIJGqLDek1K9z-oc2qg8n4AvrN1PXE/edit)
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+`git clone https://github.com/LisaKaliuko/Innowise-Lab-Internship-Level-2-Mini-paint`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`cd mini-paint`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`npm install`
 
-### `npm test`
+## How to run the app (dev)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Go to folder `mini-paint`
 
-### `npm run build`
+Command `npm install` in console
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Command `npm start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## How to run the app (build)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Go to folder `mini-paint`
 
-### `npm run eject`
+Command `npm build` in console
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Database snapshot
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In this project there are 1 collection: `pics`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Collection `pics` contains pictires and users, who draw this pictures and consists of next fields:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| Field name |   Type |      Example | Description                   |
+| ---------- | -----: | -----------: | ----------------------------- |
+| picData    | string |              | DOMString containing data URL |
+| user       | string | lisa@mail.ru | User email                    |
 
-## Learn More
+## Application stack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+React
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+React-app-rewire-alias
+
+React-app-rewired
+
+React-dom
+
+React-redux
+
+React-redux-dom
+
+React-redux-firebase
+
+Redux
+
+Redux-actions
+
+Redux-firestore
+
+Redux-saga
+
+Firebase
+
+Styled-components
+
+Typescript
+
+Reselect
+
+Bootstrap-icons
+
+Eslint
+
+## Project structure
+
+`src/components` - folder contains all components. Every component is in separate folder. All components named in kebab-case.prefix.extension and has extension .tsx. Every folder contains component file, style file and export file.
+
+`src/core` - folder contains elements which related to Redux
+
+`src/core/actions` - folder contains .ts files with actions
+
+`src/core/hooks` - folder contains .ts files with hooks every in separate folder
+
+`src/core/interfaces` - folder contains .ts files with interfaces
+
+`src/core/reducers` - folder contains .ts files with reducers
+
+`src/core/saga` - folder contains .ts files with sagas
+
+`src/core/selectors` - folder contains .ts file with selectors
+
+`src/core/services` - folder contains .ts files with services(functions and methods) for work with Firebase authentications and Firestore database
+
+`src/pages` - folder contains react components for router, every in separate folder, files with extension .tsx
+
+`src/shared` - folder contains elements that different components use
+
+`src/shared/components` - folder contains components that are used in many places
+
+`src/shared/constants` - folder contains files with constants
+
+`src/shared/helpers` - folder contains .ts files with functions and methods that different components use
+
+`src/theme` - folder contains .ts files with themes for app

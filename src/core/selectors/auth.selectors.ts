@@ -12,3 +12,8 @@ export const selectAuthLoading = createSelector(
   getAuth,
   (auth) => auth.isLoading
 );
+
+export const selectCreativeTheme = createSelector(
+  getAuth,
+  (auth) => auth.creativeTheme
+);

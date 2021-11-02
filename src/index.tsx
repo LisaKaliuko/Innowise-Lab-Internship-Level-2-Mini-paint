@@ -15,6 +15,7 @@ import { firebaseConfig } from '@config/fb.config';
 import { rootReducer } from '@reducers/root.reducer';
 import { rootSaga } from '@saga/root.saga';
 import { loadState, saveState } from '@helpers/state.helpers';
+import { GlobalStyle } from './global.styles';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -52,6 +53,7 @@ store.subscribe(() => {
 ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
+      <GlobalStyle />
       <App />
     </ReactReduxFirebaseProvider>
   </Provider>,

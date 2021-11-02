@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import { getAllPics } from '@actions/draw.actions';
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import { PicObj } from '@interfaces/draw.interface';
-import { selectAllPics } from '@selectors/draw.selectors';
+import { selectAllPics, selectSortEmail } from '@selectors/draw.selectors';
+import { Filter } from './components/filter';
 import {
   PageContainer,
   PicsContainer,
@@ -15,6 +16,14 @@ import {
 const GalleryComponent: FC = (): JSX.Element => {
   const dispatch = useDispatch();
   const arrOfPics: Array<PicObj> = useTypedSelector(selectAllPics);
+  const sortEmail = useTypedSelector(selectSortEmail);
+  let sortedArr: Array<PicObj> = [];
+
+  if (sortEmail !== '') {
+    sortedArr = arrOfPics.filter(({ user }) => user === sortEmail);
+  } else if (sortEmail === '') {
+    sortedArr = arrOfPics;
+  }
 
   useEffect(() => {
     dispatch(getAllPics());
@@ -23,9 +32,10 @@ const GalleryComponent: FC = (): JSX.Element => {
   return (
     <PageContainer>
       <h1>Gallery</h1>
+      {arrOfPics.length !== 0 && <Filter arrOfPics={arrOfPics} />}
       <PicsContainer>
-        {arrOfPics.length !== 0 &&
-          arrOfPics.map(({ user, picData }) => {
+        {sortedArr.length !== 0 &&
+          sortedArr.map(({ user, picData }) => {
             return (
               <PictureBlock key={picData}>
                 <img src={picData} alt="pic" />

@@ -16,6 +16,8 @@ export enum DrawActionsTypes {
   GET_ALL_PICS = '[DRAW] GET_ALL_PICS',
   GET_ALL_PICS_SUCCESS = '[DRAW] GET_ALL_PICS_SUCCESS',
   GET_ALL_PICS_ERROR = '[DRAW] GET_ALL_PICS_ERROR',
+
+  SET_SORT_EMAIL = '[DRAW] SORT_EMAIL',
 }
 
 export const chooseTool = createAction(
@@ -52,4 +54,9 @@ export const getAllPicsSuccess = createAction(
 export const getAllPicsError = createAction(
   DrawActionsTypes.GET_ALL_PICS_ERROR,
   (getPicsErr: string) => ({ getPicsErr })
+);
+
+export const setSortEmail = createAction(
+  DrawActionsTypes.SET_SORT_EMAIL,
+  (sortEmail: string) => ({ sortEmail })
 );

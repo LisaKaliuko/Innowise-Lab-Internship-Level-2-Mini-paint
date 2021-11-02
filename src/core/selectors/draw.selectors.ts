@@ -19,3 +19,8 @@ export const selectDrawLoading = createSelector(
   getDraw,
   (draw) => draw.isLoading
 );
+
+export const selectSortEmail = createSelector(
+  getDraw,
+  (draw) => draw.sortEmail
+);

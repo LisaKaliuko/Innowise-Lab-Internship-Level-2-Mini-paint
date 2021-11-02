@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import { Header } from '../header';
 import { Footer } from '../footer';
 import { MainPage } from '@pages/main-page';
-import { Paint } from '@pages/paint';
+import { Paint } from '@src/pages/paint';
 import { Loader } from '../loader';
 import { Gallery } from '@pages/gallery';
 import { AppRouteNames } from '@constants/app-route-names.constants';
