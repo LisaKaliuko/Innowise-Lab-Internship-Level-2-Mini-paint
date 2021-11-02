@@ -104,7 +104,7 @@ export const SecondTheme = {
   loader: {
     bgColor: '#ffffff',
     overlayColor: '#f3f3f3',
-    spinColor: CommonColours.SecondTheme,
+    spinColor: CommonColours.SecondThemeBorders,
   },
   drawingPanel: {
     border: '#000000',
