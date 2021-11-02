@@ -40,10 +40,10 @@ const RouterComponent: FC = (): JSX.Element => {
           )}
         </Route>
         <PrivateRoute path={AppRouteNames.Paint}>
-          <Paint />
+          {user ? <Paint /> : <Redirect to={AppRouteNames.Login} />}
         </PrivateRoute>
         <PrivateRoute path={AppRouteNames.Gallery}>
-          <Gallery />
+          {user ? <Gallery /> : <Redirect to={AppRouteNames.Login} />}
         </PrivateRoute>
       </Switch>
       <Footer />
