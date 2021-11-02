@@ -26,7 +26,7 @@ export const Title = styled.div`
 
 export const Links = styled.ul`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   margin: 0px;
   padding: 0px;
   list-style: none;
@@ -45,9 +45,7 @@ export const CheckBoxWrapper = styled.div`
 `;
 
 export const CheckBoxLabel = styled.label`
-  position: absolute;
-  top: 23%;
-  left: 0;
+  display: inline-block;
   width: 42px;
   height: 26px;
   border-radius: 15px;
@@ -58,31 +56,22 @@ export const CheckBoxLabel = styled.label`
     content: '';
     display: block;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    margin: 3px;
+    width: 19px;
+    height: 19px;
+    margin: 4px 3px;
     background: ${(props) => props.theme.header.toggleColor};
     transition: 0.3s;
   }
 `;
 
 export const CheckBox = styled.input`
-  opacity: 0;
-  z-index: 1;
-  border-radius: 15px;
-  width: 42px;
-  height: 26px;
+  display: none;
 
   &:checked + ${CheckBoxLabel} {
     background: ${(props) => props.theme.header.creativeRadioBgColor};
 
     &::after {
-      content: '';
-      display: block;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      margin-left: 21px;
+      margin-left: 20px;
       transition: 0.3s;
     }
   }

@@ -56,6 +56,7 @@ const HeaderComponent: FC = (): JSX.Element => {
         )}
         <CheckBoxWrapper>
           <CheckBox
+            name="themeToggler"
             id="checkbox"
             type="checkbox"
             onClick={changeTheme}
