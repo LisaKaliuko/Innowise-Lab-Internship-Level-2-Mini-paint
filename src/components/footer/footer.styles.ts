@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Footer = styled.footer`
   flex: 0 0 auto;
-  background-color: ${(props) => props.theme.footer.bg};
+  background: ${(props) => props.theme.footer.bg};
   display: flex;
   justify-content: space-around;
   width: 100%;

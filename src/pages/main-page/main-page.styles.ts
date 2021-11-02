@@ -8,11 +8,14 @@ export const Content = styled.div`
 
 export const Title = styled.div`
   background: ${(props) => props.theme.mainPage.title};
+  font-family: 'Ceviche One', cursive;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   h1 {
     font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 30px;
   }
 `;
 
@@ -46,7 +49,7 @@ export const PrimaryButton = styled.div`
     width: 400px;
     border-radius: 10px;
     box-shadow: 0 0 10px ${(props) => props.theme.form.shadow};
-    top: -255%;
+    top: -310%;
     right: -25%;
     opacity: 0;
   }

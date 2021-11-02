@@ -1,9 +1,11 @@
 enum CommonColours {
-  FirstTheme = '#003f87', // main colour of app
-  FirstThemeHover = '#73b2fa', // all hover of app
-  SecondTheme = '#fa8d20', // main colour of app
+  FirstTheme = '#4a4a4a', // main colour of app
+  FirstThemeHover = '#7a7a7a', // all hover of app
+  FirstThemeTitle = '#000000',
+  SecondTheme = 'linear-gradient(90deg, Red, Orange, Yellow, Green, Blue, Indigo,violet)', // main colour of app
   SecondThemeHover = '#ff0000', // all hover of app
-  Title = 'linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet)', // rainbow title
+  SecondThemeTitle = 'linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet)', // rainbow title
+  SecondThemeBorders = '#bf3c04',
   Shadow = 'rgba(0,0,0,0.5)', // all shadows of app
   HeaderFooterText = '#ffffff', // text colour of header and footer
 }
@@ -22,7 +24,7 @@ export const FirstTheme = {
     text: CommonColours.HeaderFooterText,
   },
   mainPage: {
-    title: CommonColours.Title,
+    title: CommonColours.FirstThemeTitle,
   },
   primaryButton: {
     border: CommonColours.FirstTheme,
@@ -81,10 +83,10 @@ export const SecondTheme = {
     text: CommonColours.HeaderFooterText,
   },
   mainPage: {
-    title: CommonColours.Title,
+    title: CommonColours.SecondThemeTitle,
   },
   primaryButton: {
-    border: CommonColours.SecondTheme,
+    border: CommonColours.SecondThemeBorders,
     text: '#000000',
     textHover: '#ffffff',
     bgHover: CommonColours.SecondThemeHover,
@@ -92,7 +94,7 @@ export const SecondTheme = {
   form: {
     shadow: CommonColours.Shadow,
     input: '#c7ccd0',
-    button: CommonColours.SecondTheme,
+    button: CommonColours.SecondThemeBorders,
     buttonText: '#ffffff',
     buttonHover: CommonColours.SecondThemeHover,
   },

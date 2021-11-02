@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Menu = styled.nav`
-  background-color: ${(props) => props.theme.header.bg};
+  background: ${(props) => props.theme.header.bg};
   display: flex;
   align-items: center;
   justify-content: space-evenly;

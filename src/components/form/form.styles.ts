@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 30%;
+  width: 25%;
   margin: 30px auto;
   padding: 50px 0px;
   box-shadow: 0 0 10px ${(props) => props.theme.form.shadow};
