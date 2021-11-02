@@ -27,16 +27,21 @@ export const Icon = styled.p`
   height: 30px;
   cursor: pointer;
 
-  ${(props) =>
-    props.className?.includes('selected')
-      ? css`
-          background-color: ${(props) => props.theme.drawingPanel.selectedTool};
-        `
-      : ''}
-
   &:hover {
     background-color: ${(props) => props.theme.drawingPanel.iconBgHover};
   }
+`;
+
+interface Props {
+  isActive: boolean;
+}
+
+export const DrawIcon = styled(Icon)<Props>`
+  ${(props) =>
+    props.isActive === true &&
+    css`
+      background-color: ${(props) => props.theme.drawingPanel.selectedTool};
+    `}
 `;
 
 export const Range = styled.span`
