@@ -8,11 +8,6 @@ export const ComponentContainer = styled.div`
   padding: 7px;
   margin-bottom: 10px;
 
-  @media ${DEVICES.tablet} {
-    width: 80px;
-    margin-bottom: 0;
-  }
-
   @media ${DEVICES.laptop} {
     width: 100px;
   }

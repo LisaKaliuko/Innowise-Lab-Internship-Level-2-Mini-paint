@@ -13,7 +13,7 @@ export const Content = styled.div`
 
   @media ${DEVICES.laptop} {
     width: 60%;
-    margin: 50px auto auto auto;
+    margin: 45px auto auto auto;
   }
 
   @media ${DEVICES.laptopL} {

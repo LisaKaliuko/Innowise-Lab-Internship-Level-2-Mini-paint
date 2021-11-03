@@ -43,7 +43,11 @@ export const LinkItem = styled.li`
   margin: 0px 10px;
 
   a {
-    font-size: 22px;
+    font-size: 16px;
+
+    @media ${DEVICES.tablet} {
+      font-size: 22px;
+    }
   }
 `;
 

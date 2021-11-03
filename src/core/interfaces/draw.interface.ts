@@ -10,6 +10,11 @@ export interface Coordinates {
   left: number;
 }
 
+export interface CanvasSize {
+  width: number;
+  height: number;
+}
+
 export interface OnMouseDownArguments {
   e: MouseEvent;
   context: CanvasRenderingContext2D | undefined | null;
@@ -24,6 +29,7 @@ export interface OnMouseMoveArguments {
   isPainting: boolean;
   startDrawingPos: Coordinates;
   canvasData: ImageData | undefined;
+  canvasSize: CanvasSize;
 }
 
 export interface ListOfTools {
