@@ -1,16 +1,31 @@
 import styled from 'styled-components';
 
+import { DEVICES } from '@src/shared/constants/devices-sizes.constants';
+
 export const Container = styled.div`
   height: 100%;
 `;
 
 export const Form = styled.form`
-  width: 25%;
+  width: 85%;
   margin: 30px auto;
-  padding: 50px 0px;
+  padding: 35px 0px;
   box-shadow: 0 0 10px ${(props) => props.theme.form.shadow};
   border-radius: 10px;
   text-align: center;
+
+  @media ${DEVICES.tablet} {
+    width: 55%;
+  }
+
+  @media ${DEVICES.laptop} {
+    width: 45%;
+    padding: 50px 0px;
+  }
+
+  @media ${DEVICES.laptopL} {
+    width: 35%;
+  }
 
   p {
     font-size: 20px;
@@ -19,7 +34,11 @@ export const Form = styled.form`
 
 export const Title = styled.h1`
   margin: 0px;
-  font-size: 40px;
+  font-size: 30px;
+
+  @media ${DEVICES.laptop} {
+    font-size: 40px;
+  }
 `;
 
 export const InputGroup = styled.div`

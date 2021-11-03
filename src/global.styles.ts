@@ -1,8 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { DEVICES } from './shared/constants/devices-sizes.constants';
+
 export const GlobalStyle = createGlobalStyle`
   html {
-    height: 100%;
+    min-height: 100%;
+
+    @media ${DEVICES.laptop} {
+      height: 100%;
+    }
   }
 
   body {

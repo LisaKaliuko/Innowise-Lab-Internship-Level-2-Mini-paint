@@ -1,10 +1,21 @@
 import styled, { css } from 'styled-components';
 
+import { DEVICES } from '@src/shared/constants/devices-sizes.constants';
+
 export const ComponentContainer = styled.div`
   position: relative;
   border: 2px solid ${(props) => props.theme.drawingPanel.border};
   padding: 7px;
-  width: 100px;
+  margin-bottom: 10px;
+
+  @media ${DEVICES.tablet} {
+    width: 80px;
+    margin-bottom: 0;
+  }
+
+  @media ${DEVICES.laptop} {
+    width: 100px;
+  }
 `;
 
 export const Title = styled.h3`
@@ -15,7 +26,11 @@ export const Title = styled.h3`
 export const IconsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+
+  @media ${DEVICES.laptop} {
+    justify-content: space-between;
+  }
 `;
 
 export const Icon = styled.p`
@@ -56,6 +71,6 @@ export const Range = styled.span`
 
 export const Palette = styled.span`
   position: absolute;
-  top: 70px;
-  right: -45px;
+  top: 15px;
+  left: 60px;
 `;

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 80%;
-  margin: auto;
-  margin-top: 20px;
+  height: 100%;
+  width: 90%;
+  margin: 20px auto;
 `;
 
 export const Title = styled.h1`
@@ -20,4 +20,6 @@ export const Canvas = styled.canvas`
 
 export const DrawingContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 `;

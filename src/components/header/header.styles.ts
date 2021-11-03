@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { DEVICES } from '@src/shared/constants/devices-sizes.constants';
+
 export const Menu = styled.nav`
   background: ${(props) => props.theme.header.bg};
   display: flex;
@@ -19,8 +21,13 @@ export const Menu = styled.nav`
 
 export const Title = styled.div`
   a {
+    display: none;
     font-size: 30px;
     font-weight: 700;
+
+    @media ${DEVICES.tablet} {
+      display: inline-block;
+    }
   }
 `;
 

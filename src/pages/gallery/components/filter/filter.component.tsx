@@ -5,7 +5,7 @@ import { PicObj } from '@src/core/interfaces/draw.interface';
 import { setSortEmail } from '@actions/draw.actions';
 import { useTypedSelector } from '@src/core/hooks/use-typed-selector.hook';
 import { selectSortEmail } from '@src/core/selectors/draw.selectors';
-import { Select, Button } from './filter.styles';
+import { Select, Button, Container } from './filter.styles';
 
 interface FilterComponentProps {
   arrOfPics: Array<PicObj>;
@@ -32,7 +32,7 @@ const FilterComponent: FC<FilterComponentProps> = ({
   const saveSortEmail = () => dispatch(setSortEmail(selectedEmail));
 
   return (
-    <div>
+    <Container>
       <Select onChange={chooseUser} defaultValue={sortEmail}>
         <option>All</option>
         {uniqueUsers.length !== 0 &&
@@ -43,7 +43,7 @@ const FilterComponent: FC<FilterComponentProps> = ({
           ))}
       </Select>
       <Button onClick={saveSortEmail}>Sort</Button>
-    </div>
+    </Container>
   );
 };
 

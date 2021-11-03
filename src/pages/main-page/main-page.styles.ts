@@ -1,9 +1,26 @@
 import styled from 'styled-components';
 
+import { DEVICES } from '@src/shared/constants/devices-sizes.constants';
+
 export const Content = styled.div`
-  width: 40%;
+  width: 90%;
   height: 100%;
-  margin: 50px auto;
+  margin: auto;
+
+  @media ${DEVICES.tablet} {
+    width: 70%;
+    margin: 20px auto;
+  }
+
+  @media ${DEVICES.laptop} {
+    width: 60%;
+    margin: 35px auto;
+  }
+
+  @media ${DEVICES.laptopL} {
+    width: 50%;
+    margin: 50px auto;
+  }
 `;
 
 export const Title = styled.div`
@@ -13,25 +30,50 @@ export const Title = styled.div`
   -webkit-text-fill-color: transparent;
 
   h1 {
-    font-size: 60px;
+    font-size: 30px;
     margin-top: 0px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+
+    @media ${DEVICES.tablet} {
+      font-size: 40px;
+    }
+
+    @media ${DEVICES.laptop} {
+      font-size: 45px;
+    }
+
+    @media ${DEVICES.laptopL} {
+      font-size: 55px;
+    }
   }
 `;
 
 export const Text = styled.p`
-  font-size: 20px;
+  font-size: 16px;
+
+  @media ${DEVICES.tablet} {
+    font-size: 20px;
+  }
+
+  @media ${DEVICES.laptop} {
+    font-size: 22px;
+  }
+
+  @media ${DEVICES.laptopL} {
+    font-size: 25px;
+  }
 `;
 
 export const PrimaryButton = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+  margin-bottom: 20px;
 
   a {
     padding: 15px 45px;
     color: ${(props) => props.theme.primaryButton.text};
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
     text-decoration: none;
     border: 2px solid ${(props) => props.theme.primaryButton.border};
@@ -40,6 +82,10 @@ export const PrimaryButton = styled.div`
     &:hover {
       background-color: ${(props) => props.theme.primaryButton.bgHover};
       color: ${(props) => props.theme.primaryButton.textHover};
+    }
+
+    @media ${DEVICES.laptop} {
+      font-size: 25px;
     }
   }
 `;
