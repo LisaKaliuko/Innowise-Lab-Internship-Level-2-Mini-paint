@@ -47,6 +47,18 @@ export const LinkItem = styled.li`
   }
 `;
 
+export const ThemeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${(props) => props.theme.header.text};
+  font-size: 14px;
+
+  span {
+    margin-bottom: 5px;
+  }
+`;
+
 export const CheckBoxWrapper = styled.div`
   position: relative;
 `;
@@ -54,7 +66,7 @@ export const CheckBoxWrapper = styled.div`
 export const CheckBoxLabel = styled.label`
   display: inline-block;
   width: 42px;
-  height: 26px;
+  height: 25px;
   border-radius: 15px;
   background: ${(props) => props.theme.header.radioBgColor};
   cursor: pointer;

@@ -11,6 +11,7 @@ import {
   Title,
   Links,
   LinkItem,
+  ThemeContainer,
   CheckBoxWrapper,
   CheckBoxLabel,
   CheckBox,
@@ -54,16 +55,19 @@ const HeaderComponent: FC = (): JSX.Element => {
             </LinkItem>
           </>
         )}
-        <CheckBoxWrapper>
-          <CheckBox
-            name="themeToggler"
-            id="checkbox"
-            type="checkbox"
-            onClick={changeTheme}
-            defaultChecked={creativeTheme}
-          />
-          <CheckBoxLabel htmlFor="checkbox" />
-        </CheckBoxWrapper>
+        <ThemeContainer>
+          <span>Choose your fighter</span>
+          <CheckBoxWrapper>
+            <CheckBox
+              name="themeToggler"
+              id="checkbox"
+              type="checkbox"
+              onClick={changeTheme}
+              defaultChecked={creativeTheme}
+            />
+            <CheckBoxLabel htmlFor="checkbox" />
+          </CheckBoxWrapper>
+        </ThemeContainer>
       </Links>
     </Menu>
   );
