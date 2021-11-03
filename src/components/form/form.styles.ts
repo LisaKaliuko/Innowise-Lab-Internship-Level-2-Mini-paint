@@ -4,11 +4,13 @@ import { DEVICES } from '@src/shared/constants/devices-sizes.constants';
 
 export const Container = styled.div`
   height: 100%;
+  width: 90%;
+  margin: 30px auto auto auto;
 `;
 
 export const Form = styled.form`
-  width: 85%;
-  margin: 30px auto;
+  width: 90%;
+  margin: 10px auto;
   padding: 35px 0px;
   box-shadow: 0 0 10px ${(props) => props.theme.form.shadow};
   border-radius: 10px;

@@ -65,7 +65,7 @@ export const CheckBoxLabel = styled.label`
     border-radius: 50%;
     width: 19px;
     height: 19px;
-    margin: 4px 3px;
+    margin: 3px;
     background: ${(props) => props.theme.header.toggleColor};
     transition: 0.3s;
   }

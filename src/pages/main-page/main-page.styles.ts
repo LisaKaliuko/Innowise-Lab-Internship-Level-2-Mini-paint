@@ -5,21 +5,19 @@ import { DEVICES } from '@src/shared/constants/devices-sizes.constants';
 export const Content = styled.div`
   width: 90%;
   height: 100%;
-  margin: auto;
+  margin: 30px auto auto auto;
 
   @media ${DEVICES.tablet} {
     width: 70%;
-    margin: 20px auto;
   }
 
   @media ${DEVICES.laptop} {
     width: 60%;
-    margin: 35px auto;
+    margin: 50px auto auto auto;
   }
 
   @media ${DEVICES.laptopL} {
     width: 50%;
-    margin: 50px auto;
   }
 `;
 

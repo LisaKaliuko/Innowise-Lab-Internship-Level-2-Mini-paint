@@ -1,14 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { DEVICES } from './shared/constants/devices-sizes.constants';
-
 export const GlobalStyle = createGlobalStyle`
   html {
-    min-height: 100%;
-
-    @media ${DEVICES.laptop} {
-      height: 100%;
-    }
+    height: 100%;
   }
 
   body {
@@ -20,6 +14,6 @@ export const GlobalStyle = createGlobalStyle`
   #root {
     display: flex; 
     flex-direction: column; 
-    height: 100%;
+    min-height: 100%;
   }
 `;
