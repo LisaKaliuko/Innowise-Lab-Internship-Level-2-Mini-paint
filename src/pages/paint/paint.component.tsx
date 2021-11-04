@@ -32,9 +32,7 @@ const PaintComponent: FC = (): JSX.Element => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   const [canvasOffset, setCanvasOffset] = useState({ left: 0, top: 0 });
-  console.log('canvasOffset', canvasOffset);
   const [canvasSize, setCanvasSize] = useState({ width: 100, height: 100 });
-  console.log('canvasSize', canvasSize);
   const [isPainting, setIsPainting] = useState(false);
   const [canvasData, setCanvasData] = useState<ImageData | undefined>();
   const [startDrawingPos, setStartDrawingPos] = useState({ top: 0, left: 0 });
