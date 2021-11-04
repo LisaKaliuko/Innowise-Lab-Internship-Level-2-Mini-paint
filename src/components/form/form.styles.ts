@@ -43,21 +43,11 @@ export const Title = styled.h1`
   }
 `;
 
-export const InputGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 75%;
-  margin: 25px auto;
-  text-align: left;
-`;
-
-export const Label = styled.label`
-  font-size: 18px;
-`;
-
 export const Input = styled.input`
-  font-size: 20px;
-  padding: 5px 10px;
+  font-size: 18px;
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid ${(props) => props.theme.form.input};
   border-radius: 10px;
 `;

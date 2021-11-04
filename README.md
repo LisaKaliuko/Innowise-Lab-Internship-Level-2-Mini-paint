@@ -47,6 +47,8 @@ React-app-rewired
 
 React-dom
 
+React-hook-form
+
 React-redux
 
 React-redux-dom
