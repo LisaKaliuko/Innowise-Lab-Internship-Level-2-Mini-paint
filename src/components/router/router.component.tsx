@@ -39,12 +39,19 @@ const RouterComponent: FC = (): JSX.Element => {
             <Redirect to={AppRouteNames.Paint} />
           )}
         </Route>
-        <PrivateRoute path={AppRouteNames.Paint}>
-          {user ? <Paint /> : <Redirect to={AppRouteNames.Login} />}
-        </PrivateRoute>
-        <PrivateRoute path={AppRouteNames.Gallery}>
-          {user ? <Gallery /> : <Redirect to={AppRouteNames.Login} />}
-        </PrivateRoute>
+        <PrivateRoute
+          path={AppRouteNames.Paint}
+          component={<Paint />}
+          isRedirect={Boolean(!user)}
+          redirectTo={AppRouteNames.Login}
+        />
+
+        <PrivateRoute
+          path={AppRouteNames.Gallery}
+          component={<Gallery />}
+          isRedirect={Boolean(!user)}
+          redirectTo={AppRouteNames.Login}
+        />
       </Switch>
       <Footer />
     </>

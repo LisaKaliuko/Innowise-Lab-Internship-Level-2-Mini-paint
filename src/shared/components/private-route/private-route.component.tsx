@@ -1,18 +1,22 @@
 import React, { FC, ReactNode } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 interface PrivateRouteProps {
   path: string;
-  children: ReactNode;
+  component: ReactNode;
+  isRedirect: boolean;
+  redirectTo: string;
 }
 
 const PrivateRouteComponent: FC<PrivateRouteProps> = ({
   path,
-  children,
+  component,
+  isRedirect,
+  redirectTo,
 }): JSX.Element => {
   return (
     <Route path={path} exact>
-      {children}
+      {isRedirect ? <Redirect to={redirectTo} /> : component}
     </Route>
   );
 };
