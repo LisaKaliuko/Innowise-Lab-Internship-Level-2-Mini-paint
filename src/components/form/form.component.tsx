@@ -23,8 +23,12 @@ interface FormData {
 }
 
 const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
-  const { register, handleSubmit } = useForm<FormData>();
-  const errors = useTypedSelector(selectAuthErrors);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+  const errorsObj = useTypedSelector(selectAuthErrors);
   const { title, text, link, linkName } = formType;
   const dispatch = useDispatch();
 
@@ -50,17 +54,34 @@ const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
           })}
           placeholder="Email"
         />
+        {errors.email && <Warning>Your email is required</Warning>}
         <Input
           type="password"
           {...register('password', {
             required: true,
+            minLength: 8,
+            pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]/g,
           })}
           placeholder="Password"
         />
+        {errors.password?.type === 'required' && (
+          <Warning>Your password is required</Warning>
+        )}
+        {errors.password?.type === 'minLength' && (
+          <Warning>Your password must be larger then 7 characters</Warning>
+        )}
+        {errors.password?.type === 'pattern' && (
+          <Warning>
+            Your password must have at least one number, one capital letter and
+            one lowercase letter
+          </Warning>
+        )}
         <Warning>
-          {title === 'Login' && errors?.loginError ? errors.loginError : ''}
-          {title === 'Registration' && errors?.registerError
-            ? errors.registerError
+          {title === 'Login' && errorsObj?.loginError
+            ? errorsObj.loginError
+            : ''}
+          {title === 'Registration' && errorsObj?.registerError
+            ? errorsObj.registerError
             : ''}
         </Warning>
         <Button type="submit">{title}</Button>

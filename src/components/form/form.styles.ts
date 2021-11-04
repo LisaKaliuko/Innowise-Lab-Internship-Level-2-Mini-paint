@@ -47,14 +47,16 @@ export const Input = styled.input`
   font-size: 18px;
   width: 70%;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 1px solid ${(props) => props.theme.form.input};
   border-radius: 10px;
 `;
 
 export const Warning = styled.p`
+  font-size: 16px !important;
   color: ${(props) => props.theme.warning.text};
   margin: 0px;
+  margin-bottom: 10px;
 `;
 
 export const Button = styled.button`
