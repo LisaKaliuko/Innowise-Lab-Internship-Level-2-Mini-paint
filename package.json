@@ -6,6 +6,7 @@
     "@hookform/error-message": "^2.0.0",
     "bootstrap-icons": "^1.6.1",
     "firebase": "^8.8.1",
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.18.1",
@@ -22,11 +23,14 @@
     "typescript": "^4.4.4",
     "web-vitals": "^1.1.2"
   },
+  "homepage": "https://LisaKaliuko.github.io/Innowise-Lab-Internship-Level-2-Mini-paint",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
