@@ -2,8 +2,7 @@ import {
   Coordinates,
   OnMouseDownArguments,
   OnMouseMoveArguments,
-} from '../../core/interfaces/draw.interface';
-import { CanvasSize } from '../constants/canvas-size.constants';
+} from '@interfaces/draw.interface';
 
 const line = {
   onMouseDown: ({
@@ -25,13 +24,16 @@ const line = {
     isPainting,
     startDrawingPos,
     canvasData,
+    canvasSize,
   }: OnMouseMoveArguments): void => {
-    if (isPainting && context && canvasData) {
+    const isCanDraw = isPainting && context && canvasData;
+
+    if (isCanDraw) {
       const finishPos: { x: number; y: number } = {
         x: e.pageX - canvasOffset.left,
         y: e.pageY - canvasOffset.top,
       };
-      context.clearRect(0, 0, CanvasSize.width, CanvasSize.height);
+      context.clearRect(0, 0, canvasSize.width, canvasSize.height);
       context.putImageData(canvasData, 0, 0);
       context.beginPath();
       context.moveTo(startDrawingPos.left, startDrawingPos.top);

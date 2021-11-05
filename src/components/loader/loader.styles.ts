@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 export const LoaderContainer = styled.div`
   display: block;
   width: 100%;
-  height: 79%;
+  height: 100%;
   position: absolute;
   z-index: 9999;
   background-color: ${(props) => props.theme.loader.bgColor};

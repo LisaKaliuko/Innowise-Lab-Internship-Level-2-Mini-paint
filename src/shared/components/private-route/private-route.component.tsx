@@ -1,23 +1,22 @@
 import React, { FC, ReactNode } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import { selectUser } from '../../../core/selectors/selectors';
-import { useTypedSelector } from '../../../core/hooks/use-typed-selector.hook';
-
 interface PrivateRouteProps {
   path: string;
-  children: ReactNode;
+  component: ReactNode;
+  isRedirect: boolean;
+  redirectTo: string;
 }
 
 const PrivateRouteComponent: FC<PrivateRouteProps> = ({
   path,
-  children,
+  component,
+  isRedirect,
+  redirectTo,
 }): JSX.Element => {
-  const user = useTypedSelector(selectUser);
-
   return (
     <Route path={path} exact>
-      {user ? children : <Redirect to="/login" />}
+      {isRedirect ? <Redirect to={redirectTo} /> : component}
     </Route>
   );
 };

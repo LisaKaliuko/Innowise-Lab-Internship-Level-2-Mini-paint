@@ -3,7 +3,6 @@ import { createSelector } from 'reselect';
 import { RootState } from '../reducers/root.reducer';
 
 const getAuth = (state: RootState) => state.auth;
-const getDraw = (state: RootState) => state.draw;
 
 export const selectAuthErrors = createSelector(getAuth, (auth) => auth.errors);
 
@@ -14,7 +13,7 @@ export const selectAuthLoading = createSelector(
   (auth) => auth.isLoading
 );
 
-export const selectCurrentTool = createSelector(
-  getDraw,
-  (draw) => draw.currentTool
+export const selectCreativeTheme = createSelector(
+  getAuth,
+  (auth) => auth.creativeTheme
 );

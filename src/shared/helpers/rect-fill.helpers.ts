@@ -4,7 +4,7 @@ import {
   OnMouseMoveArguments,
 } from '@interfaces/draw.interface';
 
-const rectangle = {
+const rectangleFill = {
   onMouseDown: ({
     e,
     canvasOffset,
@@ -48,14 +48,14 @@ const rectangle = {
             rectangle.width < 0 ? -rectangle.width : rectangle.width;
         }
 
-        context.strokeRect(
+        context.fillRect(
           startDrawingPos.left,
           startDrawingPos.top,
           rectangle.width,
           rectangleHeight
         );
       } else {
-        context.strokeRect(
+        context.fillRect(
           startDrawingPos.left,
           startDrawingPos.top,
           rectangle.width,
@@ -66,4 +66,4 @@ const rectangle = {
   },
 };
 
-export default rectangle;
+export default rectangleFill;

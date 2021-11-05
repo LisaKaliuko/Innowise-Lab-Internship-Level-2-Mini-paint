@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
 
-import { selectAuthLoading } from '../../core/selectors/selectors';
-import { useTypedSelector } from '../../core/hooks/use-typed-selector.hook';
+import { selectAuthLoading } from '@selectors/auth.selectors';
+import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import { LoaderContainer, LoaderItem } from './loader.styles';
+import { selectDrawLoading } from '@selectors/draw.selectors';
 
 const LoaderComponent: FC = (): JSX.Element => {
   const isLoadingAuth = useTypedSelector(selectAuthLoading);
+  const isLoadingDraw = useTypedSelector(selectDrawLoading);
 
-  if (isLoadingAuth) {
+  if (isLoadingAuth || isLoadingDraw) {
     return (
       <LoaderContainer>
         <LoaderItem></LoaderItem>

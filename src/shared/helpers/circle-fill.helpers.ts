@@ -4,7 +4,7 @@ import {
   OnMouseMoveArguments,
 } from '@interfaces/draw.interface';
 
-const circle = {
+const circleFill = {
   onMouseDown: ({
     e,
     canvasOffset,
@@ -27,6 +27,7 @@ const circle = {
     canvasSize,
   }: OnMouseMoveArguments): void => {
     const isCanDraw = isPainting && context && canvasData;
+
     if (isCanDraw) {
       const radiusX: number = Math.round(
         (e.pageX - canvasOffset.left - startDrawingPos.left) / 2
@@ -73,9 +74,10 @@ const circle = {
         );
       }
 
+      context.fill();
       context.stroke();
     }
   },
 };
 
-export default circle;
+export default circleFill;

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@actions/*": ["src/core/actions/*"],
+      "@hooks/*": ["src/core/hooks/*"],
+      "@interfaces/*": ["src/core/interfaces/*"],
+      "@reducers/*": ["src/core/reducers/*"],
+      "@saga/*": ["src/core/saga/*"],
+      "@selectors/*": ["src/core/selectors/*"],
+      "@services/*": ["src/core/services/*"],
+      "@pages/*": ["src/pages/*"],
+      "@icons/*": ["src/shared/components/icons/*"],
+      "@private-route/*": ["src/shared/components/private-route/*"],
+      "@constants/*": ["src/shared/constants/*"],
+      "@helpers/*": ["src/shared/helpers/*"],
+      "@theme/*": ["src/theme/*"]
+    }
+  }
+}
