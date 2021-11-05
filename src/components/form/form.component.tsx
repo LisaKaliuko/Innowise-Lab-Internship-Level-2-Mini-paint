@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
 
 import { login, register as registration } from '@actions/auth.actions';
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
@@ -35,7 +36,7 @@ const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ criteriaMode: 'all' });
   const serverErrors = useTypedSelector(selectAuthErrors);
   const { title, text, link, linkName } = formType;
   const dispatch = useDispatch();
@@ -58,32 +59,41 @@ const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
         </Text>
         <Input
           {...register('email', {
-            required: true,
+            required: 'Your email is required',
           })}
           placeholder="Email"
         />
-        {errors.email && <Warning>Your email is required</Warning>}
+        <ErrorMessage
+          errors={errors}
+          name="email"
+          render={({ message }) => <Warning>{message}</Warning>}
+        />
         <Input
           type="password"
           {...register('password', {
-            required: true,
-            minLength: 8,
-            pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]/g,
+            required: 'Your password is required',
+            minLength: {
+              value: 8,
+              message: 'Your password must be larger then 7 characters',
+            },
+            pattern: {
+              value: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]/g,
+              message:
+                'Your password must have at least one number, one capital letter and one lowercase letter',
+            },
           })}
           placeholder="Password"
         />
-        {errors.password?.type === 'required' && (
-          <Warning>Your password is required</Warning>
-        )}
-        {errors.password?.type === 'minLength' && (
-          <Warning>Your password must be larger then 7 characters</Warning>
-        )}
-        {errors.password?.type === 'pattern' && (
-          <Warning>
-            Your password must have at least one number, one capital letter and
-            one lowercase letter
-          </Warning>
-        )}
+        <ErrorMessage
+          errors={errors}
+          name="password"
+          render={({ messages }) =>
+            messages &&
+            Object.entries(messages).map(([type, message]) => (
+              <Warning key={type}>{message}</Warning>
+            ))
+          }
+        />
         <Warning>
           {title === 'Login' && serverErrors?.loginError
             ? serverErrors.loginError
