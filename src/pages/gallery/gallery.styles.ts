@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PageContainer = styled.div`
   width: 80%;
   height: 100%;
-  margin: 0px auto;
+  margin: 0px auto auto auto;
 `;
 
 export const PicsContainer = styled.div`
@@ -16,7 +16,7 @@ export const PictureBlock = styled.div`
   margin: 10px;
 
   img {
-    width: 300px;
+    width: 250px;
     border: 1px solid ${(props) => props.theme.gallery.imgBorder};
   }
 `;

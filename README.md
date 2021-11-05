@@ -8,13 +8,13 @@
 
 `git clone https://github.com/LisaKaliuko/Innowise-Lab-Internship-Level-2-Mini-paint`
 
-`cd mini-paint`
+`cd Innowise-Lab-Internship-Level-2-Mini-paint`
 
 `npm install`
 
 ## How to run the app (dev)
 
-Go to folder `mini-paint`
+Go to folder `Innowise-Lab-Internship-Level-2-Mini-paint`
 
 Command `npm install` in console
 
@@ -22,7 +22,7 @@ Command `npm start`
 
 ## How to run the app (build)
 
-Go to folder `mini-paint`
+Go to folder `Innowise-Lab-Internship-Level-2-Mini-paint`
 
 Command `npm build` in console
 
@@ -46,6 +46,8 @@ React-app-rewire-alias
 React-app-rewired
 
 React-dom
+
+React-hook-form
 
 React-redux
 

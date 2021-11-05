@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent } from 'react';
+import React, { FC, useState, ChangeEvent, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { TOOLS } from '@constants/drawing-tools.constants';
@@ -9,6 +9,7 @@ import {
 } from '@actions/draw.actions';
 import { ThicknessIcon, PaletteIcon } from '@icons/icons';
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
+import useClickOutside from '@src/core/hooks/use-click-outside.hook';
 import {
   selectColor,
   selectThickness,
@@ -18,6 +19,7 @@ import {
   ComponentContainer,
   IconsContainer,
   Icon,
+  DrawIcon,
   Range,
   Palette,
   Title,
@@ -28,6 +30,7 @@ const DrawingToolsPanelComponent: FC = (): JSX.Element => {
   const currentTool = useTypedSelector(selectTool);
   const currentThickness = useTypedSelector(selectThickness);
   const currentColor = useTypedSelector(selectColor);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const [rangeValue, setRangeValue] = useState(currentThickness);
   const [isThicknessOpen, setIsThicknessOpen] = useState(false);
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
@@ -50,6 +53,11 @@ const DrawingToolsPanelComponent: FC = (): JSX.Element => {
     dispatch(chooseColor(e.target.value));
   };
 
+  useClickOutside(wrapperRef, () => {
+    setIsThicknessOpen(false);
+    setIsPaletteOpen(false);
+  });
+
   return (
     <ComponentContainer>
       <Title>Painting tools</Title>
@@ -62,20 +70,20 @@ const DrawingToolsPanelComponent: FC = (): JSX.Element => {
         </Icon>
 
         {TOOLS.length !== 0 &&
-          TOOLS.map((tool) => {
+          TOOLS.map(({ value, icon }) => {
             return (
-              <Icon
-                key={tool?.value}
-                title={tool?.value}
-                onClick={clickOnTool(tool?.value)}
-                className={tool?.value === currentTool ? 'selected' : ''}
+              <DrawIcon
+                key={value}
+                title={value}
+                onClick={clickOnTool(value)}
+                isActive={value === currentTool ? true : false}
               >
-                {tool?.icon}
-              </Icon>
+                {icon}
+              </DrawIcon>
             );
           })}
         {isThicknessOpen && (
-          <Range>
+          <Range ref={wrapperRef}>
             <input
               type="range"
               min="1"
@@ -87,7 +95,7 @@ const DrawingToolsPanelComponent: FC = (): JSX.Element => {
           </Range>
         )}
         {isPaletteOpen && (
-          <Palette>
+          <Palette ref={wrapperRef}>
             <input type="color" value={paletteValue} onChange={changeColor} />
           </Palette>
         )}

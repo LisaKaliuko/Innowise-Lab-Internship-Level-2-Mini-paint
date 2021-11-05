@@ -3,7 +3,6 @@ import {
   OnMouseDownArguments,
   OnMouseMoveArguments,
 } from '@interfaces/draw.interface';
-import { CanvasSize } from '@constants/canvas-size.constants';
 
 const rectangleFill = {
   onMouseDown: ({
@@ -25,6 +24,7 @@ const rectangleFill = {
     isPainting,
     startDrawingPos,
     canvasData,
+    canvasSize,
   }: OnMouseMoveArguments): void => {
     const isCanDraw = isPainting && context && canvasData;
 
@@ -34,7 +34,7 @@ const rectangleFill = {
         height: e.pageY - canvasOffset.top - startDrawingPos.top,
       };
 
-      context.clearRect(0, 0, CanvasSize.width, CanvasSize.height);
+      context.clearRect(0, 0, canvasSize.width, canvasSize.height);
       context.putImageData(canvasData, 0, 0);
 
       if (e.shiftKey) {

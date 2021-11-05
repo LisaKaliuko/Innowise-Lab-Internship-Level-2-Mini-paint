@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
+import { DEVICES } from '@src/shared/constants/devices-sizes.constants';
+
 export const Menu = styled.nav`
-  background-color: ${(props) => props.theme.header.bg};
+  background: ${(props) => props.theme.header.bg};
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -19,14 +21,19 @@ export const Menu = styled.nav`
 
 export const Title = styled.div`
   a {
+    display: none;
     font-size: 30px;
     font-weight: 700;
+
+    @media ${DEVICES.tablet} {
+      display: inline-block;
+    }
   }
 `;
 
 export const Links = styled.ul`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   margin: 0px;
   padding: 0px;
   list-style: none;
@@ -36,7 +43,23 @@ export const LinkItem = styled.li`
   margin: 0px 10px;
 
   a {
-    font-size: 22px;
+    font-size: 16px;
+
+    @media ${DEVICES.tablet} {
+      font-size: 22px;
+    }
+  }
+`;
+
+export const ThemeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${(props) => props.theme.header.text};
+  font-size: 14px;
+
+  span {
+    margin-bottom: 5px;
   }
 `;
 
@@ -45,11 +68,9 @@ export const CheckBoxWrapper = styled.div`
 `;
 
 export const CheckBoxLabel = styled.label`
-  position: absolute;
-  top: 23%;
-  left: 0;
+  display: inline-block;
   width: 42px;
-  height: 26px;
+  height: 25px;
   border-radius: 15px;
   background: ${(props) => props.theme.header.radioBgColor};
   cursor: pointer;
@@ -58,8 +79,8 @@ export const CheckBoxLabel = styled.label`
     content: '';
     display: block;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     margin: 3px;
     background: ${(props) => props.theme.header.toggleColor};
     transition: 0.3s;
@@ -67,22 +88,13 @@ export const CheckBoxLabel = styled.label`
 `;
 
 export const CheckBox = styled.input`
-  opacity: 0;
-  z-index: 1;
-  border-radius: 15px;
-  width: 42px;
-  height: 26px;
+  display: none;
 
   &:checked + ${CheckBoxLabel} {
     background: ${(props) => props.theme.header.creativeRadioBgColor};
 
     &::after {
-      content: '';
-      display: block;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      margin-left: 21px;
+      margin-left: 20px;
       transition: 0.3s;
     }
   }

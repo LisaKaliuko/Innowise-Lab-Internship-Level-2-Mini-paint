@@ -8,11 +8,12 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0px; 
     height: 100%;
+    font-family: 'Work Sans', sans-serif;
   }
 
   #root {
     display: flex; 
     flex-direction: column; 
-    height: 100%;
+    min-height: 100%;
   }
 `;

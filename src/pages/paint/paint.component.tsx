@@ -9,7 +9,6 @@ import circleFill from '@helpers/circle-fill.helpers';
 import rectangleFill from '@helpers/rect-fill.helpers';
 import { DrawingToolsPanel } from './components/drawing-tools-panel';
 import { ButtonsPanel } from './components/buttons-panel';
-import { CanvasSize } from '@constants/canvas-size.constants';
 import { Coordinates, ListOfTools } from '@interfaces/draw.interface';
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import {
@@ -33,6 +32,7 @@ const PaintComponent: FC = (): JSX.Element => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   const [canvasOffset, setCanvasOffset] = useState({ left: 0, top: 0 });
+  const [canvasSize, setCanvasSize] = useState({ width: 100, height: 100 });
   const [isPainting, setIsPainting] = useState(false);
   const [canvasData, setCanvasData] = useState<ImageData | undefined>();
   const [startDrawingPos, setStartDrawingPos] = useState({ top: 0, left: 0 });
@@ -47,15 +47,19 @@ const PaintComponent: FC = (): JSX.Element => {
         left: canvasRef.current.offsetLeft,
         top: canvasRef.current.offsetTop,
       });
+      setCanvasSize({
+        width: canvasRef.current.clientWidth,
+        height: canvasRef.current.clientWidth / 1.9,
+      });
     }
   }, []);
 
   useEffect(() => {
     if (context) {
       context.fillStyle = '#FFFFFF';
-      context.fillRect(0, 0, CanvasSize.width, CanvasSize.height);
+      context.fillRect(0, 0, canvasSize.width, canvasSize.height);
     }
-  }, [context]);
+  }, [context, canvasSize]);
 
   const onMouseDown = (e: MouseEvent) => {
     if (context) {
@@ -75,7 +79,7 @@ const PaintComponent: FC = (): JSX.Element => {
 
     if (context)
       setCanvasData(
-        context.getImageData(0, 0, CanvasSize.width, CanvasSize.height)
+        context.getImageData(0, 0, canvasSize.width, canvasSize.height)
       );
   };
 
@@ -92,6 +96,7 @@ const PaintComponent: FC = (): JSX.Element => {
         isPainting,
         startDrawingPos,
         canvasData,
+        canvasSize,
       });
     }
   };
@@ -104,14 +109,18 @@ const PaintComponent: FC = (): JSX.Element => {
         <Canvas
           id="canvas"
           ref={canvasRef}
-          height={`${CanvasSize.height}px`}
-          width={`${CanvasSize.width}px`}
+          height={`${canvasSize.height}px`}
+          width={`${canvasSize.width}px`}
           onMouseDown={onMouseDown}
           onMouseUp={onMouseUp}
           onMouseLeave={onMouseUp}
           onMouseMove={onMouseMove}
         ></Canvas>
-        <ButtonsPanel context={context} canvasRef={canvasRef} />
+        <ButtonsPanel
+          context={context}
+          canvasRef={canvasRef}
+          canvasSize={canvasSize}
+        />
       </DrawingContainer>
     </Container>
   );

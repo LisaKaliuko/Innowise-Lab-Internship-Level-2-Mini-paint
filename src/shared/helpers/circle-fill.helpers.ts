@@ -3,7 +3,6 @@ import {
   OnMouseDownArguments,
   OnMouseMoveArguments,
 } from '@interfaces/draw.interface';
-import { CanvasSize } from '@constants/canvas-size.constants';
 
 const circleFill = {
   onMouseDown: ({
@@ -25,6 +24,7 @@ const circleFill = {
     isPainting,
     startDrawingPos,
     canvasData,
+    canvasSize,
   }: OnMouseMoveArguments): void => {
     const isCanDraw = isPainting && context && canvasData;
 
@@ -36,7 +36,7 @@ const circleFill = {
         (e.pageY - canvasOffset.top - startDrawingPos.top) / 2
       );
 
-      context.clearRect(0, 0, CanvasSize.width, CanvasSize.height);
+      context.clearRect(0, 0, canvasSize.width, canvasSize.height);
       context.putImageData(canvasData, 0, 0);
       context.beginPath();
 

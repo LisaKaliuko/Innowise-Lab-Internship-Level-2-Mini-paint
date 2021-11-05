@@ -1,16 +1,16 @@
-import React, { FC, useState, ChangeEvent, FormEvent } from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { login, register } from '@actions/auth.actions';
+import { login, register as registration } from '@actions/auth.actions';
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import { selectAuthErrors } from '@selectors/auth.selectors';
 import {
   Container,
   Form,
   Title,
-  InputGroup,
-  Label,
+  Text,
   Input,
   Button,
   Warning,
@@ -25,62 +25,71 @@ interface FormComponentProps {
   };
 }
 
+interface FormData {
+  email: string;
+  password: string;
+}
+
 const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const errors = useTypedSelector(selectAuthErrors);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+  const serverErrors = useTypedSelector(selectAuthErrors);
   const { title, text, link, linkName } = formType;
   const dispatch = useDispatch();
 
-  const changeEmail = (e: ChangeEvent<HTMLInputElement>) =>
-    setEmail(e.target.value);
-
-  const changePassword = (e: ChangeEvent<HTMLInputElement>) =>
-    setPassword(e.target.value);
-
-  const enterUser = (e: FormEvent) => {
-    e.preventDefault();
-
+  const enterUser: SubmitHandler<FormData> = (data): void => {
     if (title === 'Login') {
-      dispatch(login({ email, password }));
+      dispatch(login({ ...data }));
     } else if (title === 'Registration') {
-      dispatch(register({ email, password }));
+      dispatch(registration({ ...data }));
     }
-
-    setEmail('');
-    setPassword('');
   };
 
   return (
     <Container>
-      <Form onSubmit={enterUser}>
+      <Form onSubmit={handleSubmit(enterUser)}>
         <Title>{title}</Title>
-        <p>
+        <Text>
           {text}
           <Link to={link}>{linkName}</Link>
-        </p>
-        <InputGroup>
-          <Label htmlFor="email">Email</Label>
-          <Input
-            type="email"
-            name="email"
-            value={email}
-            onChange={changeEmail}
-          />
-        </InputGroup>
-        <InputGroup>
-          <Label htmlFor="password">Password</Label>
-          <Input
-            type="password"
-            name="password"
-            value={password}
-            onChange={changePassword}
-          />
-        </InputGroup>
+        </Text>
+        <Input
+          {...register('email', {
+            required: true,
+          })}
+          placeholder="Email"
+        />
+        {errors.email && <Warning>Your email is required</Warning>}
+        <Input
+          type="password"
+          {...register('password', {
+            required: true,
+            minLength: 8,
+            pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]/g,
+          })}
+          placeholder="Password"
+        />
+        {errors.password?.type === 'required' && (
+          <Warning>Your password is required</Warning>
+        )}
+        {errors.password?.type === 'minLength' && (
+          <Warning>Your password must be larger then 7 characters</Warning>
+        )}
+        {errors.password?.type === 'pattern' && (
+          <Warning>
+            Your password must have at least one number, one capital letter and
+            one lowercase letter
+          </Warning>
+        )}
         <Warning>
-          {title === 'Login' && errors?.loginError ? errors.loginError : ''}
-          {title === 'Registration' && errors?.registerError
-            ? errors.registerError
+          {title === 'Login' && serverErrors?.loginError
+            ? serverErrors.loginError
+            : ''}
+          {title === 'Registration' && serverErrors?.registerError
+            ? serverErrors.registerError
             : ''}
         </Warning>
         <Button type="submit">{title}</Button>
