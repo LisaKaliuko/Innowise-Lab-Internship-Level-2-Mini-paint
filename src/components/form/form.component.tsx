@@ -6,7 +6,15 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { login, register as registration } from '@actions/auth.actions';
 import { useTypedSelector } from '@hooks/use-typed-selector.hook';
 import { selectAuthErrors } from '@selectors/auth.selectors';
-import { Container, Form, Title, Input, Button, Warning } from './form.styles';
+import {
+  Container,
+  Form,
+  Title,
+  Text,
+  Input,
+  Button,
+  Warning,
+} from './form.styles';
 
 interface FormComponentProps {
   formType: {
@@ -28,7 +36,7 @@ const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const errorsObj = useTypedSelector(selectAuthErrors);
+  const serverErrors = useTypedSelector(selectAuthErrors);
   const { title, text, link, linkName } = formType;
   const dispatch = useDispatch();
 
@@ -44,10 +52,10 @@ const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
     <Container>
       <Form onSubmit={handleSubmit(enterUser)}>
         <Title>{title}</Title>
-        <p>
+        <Text>
           {text}
           <Link to={link}>{linkName}</Link>
-        </p>
+        </Text>
         <Input
           {...register('email', {
             required: true,
@@ -77,11 +85,11 @@ const FormComponent: FC<FormComponentProps> = ({ formType }): JSX.Element => {
           </Warning>
         )}
         <Warning>
-          {title === 'Login' && errorsObj?.loginError
-            ? errorsObj.loginError
+          {title === 'Login' && serverErrors?.loginError
+            ? serverErrors.loginError
             : ''}
-          {title === 'Registration' && errorsObj?.registerError
-            ? errorsObj.registerError
+          {title === 'Registration' && serverErrors?.registerError
+            ? serverErrors.registerError
             : ''}
         </Warning>
         <Button type="submit">{title}</Button>

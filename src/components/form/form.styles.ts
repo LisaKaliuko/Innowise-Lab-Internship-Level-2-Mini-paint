@@ -28,10 +28,6 @@ export const Form = styled.form`
   @media ${DEVICES.laptopL} {
     width: 35%;
   }
-
-  p {
-    font-size: 20px;
-  }
 `;
 
 export const Title = styled.h1`
@@ -41,6 +37,10 @@ export const Title = styled.h1`
   @media ${DEVICES.laptop} {
     font-size: 40px;
   }
+`;
+
+export const Text = styled.p`
+  font-size: 20px;
 `;
 
 export const Input = styled.input`
@@ -53,7 +53,7 @@ export const Input = styled.input`
 `;
 
 export const Warning = styled.p`
-  font-size: 16px !important;
+  font-size: 16px;
   color: ${(props) => props.theme.warning.text};
   margin: 0px;
   margin-bottom: 10px;
